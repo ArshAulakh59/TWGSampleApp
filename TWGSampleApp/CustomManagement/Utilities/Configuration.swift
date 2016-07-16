@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+//MARK: Configuration
 struct Configuration {
 	var themeColorOne: UIColor
 	var themeColorTwo: UIColor
@@ -37,6 +38,7 @@ struct Configuration {
 	}
 }
 
+//MARK: Onboarding Configuration
 struct OnboardingConfiguration {
 	var backgroundColor: UIColor
 	var labelsColor: UIColor
@@ -45,17 +47,20 @@ struct OnboardingConfiguration {
 	var pageControlTintColor: UIColor
 }
 
+//MARK: Gallery Configuration
 struct GalleryConfiguration {
 	var backgroundColor: UIColor
 	var navigationBarTintColor: UIColor
 	var navigationBarTextColor: UIColor
 }
 
+//MARK: Gallery Cell Configuration
 struct GalleryCellConfiguration {
 	var captionLabelColor: UIColor
 	var allowParallax: Bool = false
 }
 
+//MARK: Settings Configuration
 struct SettingsConfiguration {
 	var backgroundColor: UIColor
 	var navigationBarTintColor: UIColor

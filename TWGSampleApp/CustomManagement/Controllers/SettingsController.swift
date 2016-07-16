@@ -19,8 +19,8 @@ class SettingsController: UITableViewController {
 	@IBOutlet weak var themeColorTwoSegmentControl: UISegmentedControl!
 	@IBOutlet weak var checkOnboardingButton: UIButton!
 	
-	//Variables
-	var showCurrentSelectionForSegmentControl = { (color: UIColor, sender: UISegmentedControl) in
+	//Constants
+	let showCurrentSelectionForSegmentControl = { (color: UIColor, sender: UISegmentedControl) in
 		switch color {
 		case Color.Red.values.color:
 			sender.selectedSegmentIndex = Color.Red.values.index
@@ -45,6 +45,7 @@ class SettingsController: UITableViewController {
 	}
 }
 
+//MRK:- Implementation
 extension SettingsController {
 	//MARK: System
 	override func viewDidLoad() {
@@ -58,9 +59,7 @@ extension SettingsController {
 		showCurrentSelections()
 		updateAvailableOptionsByCurrentConfiguration()
 	}
-}
-
-extension SettingsController {
+	
 	//MARK: Apply Configurations
 	func applyConfigurations() {
 		tableView.backgroundColor = configuration.settingsConfiguration.backgroundColor
@@ -85,16 +84,15 @@ extension SettingsController {
 }
 
 extension SettingsController {
-	//MARK: Manage Reset To Default Theme
+	//MARK: Handle Button Actions
+	//Handle Resetting to default theme
 	@IBAction func resetToDefaultThemeClicked(sender: UIButton) {
 		configuration = Configuration()
 		showCurrentSelections()
 		updateAvailableOptionsByCurrentConfiguration()
 	}
-}
-
-extension SettingsController {
-	//MARK: Manage Theme Change
+	
+	//Handle Theme Override
 	@IBAction func colorSelected(sender: UISegmentedControl) {
 		guard let color = Color(rawValue: sender.selectedSegmentIndex) where sender.selectedSegmentIndex >= 0 && sender.selectedSegmentIndex <= 5 else {
 			return
@@ -115,10 +113,18 @@ extension SettingsController {
 		configuration = Configuration(themeColorOne: oldConfiguration.themeColorOne, themeColorTwo: oldConfiguration.themeColorTwo)
 		updateAvailableOptionsByCurrentConfiguration()
 	}
+	
+	//Check Onboarding Flow
+	@IBAction func checkOnboardingFlowClicked(sender: AnyObject) {
+		if let welcomeObject = storyboard?.instantiateViewControllerWithIdentifier("WelcomeController") as? WelcomeController {
+			welcomeObject.isDismissable = true
+			presentViewController(welcomeObject, animated: true, completion: nil)
+		}
+	}
 }
 
 extension SettingsController {
-	//MARK: Manage Selections And Options
+	//MARK: Additionals
 	func showCurrentSelections() {
 		showCurrentSelectionForSegmentControl(configuration.themeColorOne, themeColorOneSegmentColor)
 		showCurrentSelectionForSegmentControl(configuration.themeColorTwo, themeColorTwoSegmentControl)
@@ -162,15 +168,5 @@ extension SettingsController {
 		
 		updateOptions(configuration.themeColorOne, themeColorTwoSegmentControl)
 		updateOptions(configuration.themeColorTwo, themeColorOneSegmentColor)
-	}
-}
-
-extension SettingsController {
-	//MARK: Check Onboarding Flow
-	@IBAction func checkOnboardingFlowClicked(sender: AnyObject) {
-		if let welcomeObject = storyboard?.instantiateViewControllerWithIdentifier("WelcomeController") as? WelcomeController {
-			welcomeObject.isDismissable = true
-			presentViewController(welcomeObject, animated: true, completion: nil)
-		}
 	}
 }
