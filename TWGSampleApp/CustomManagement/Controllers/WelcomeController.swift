@@ -75,7 +75,7 @@ extension WelcomeController: UIScrollViewDelegate {
 	//MARK: Handle Page Control Updation
 	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		//Set Current Page Indicator
-		pageControl.currentPage = Int(scrollView.currentPage)
+		pageControl.currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
 	}
 }
 
