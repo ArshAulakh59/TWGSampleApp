@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var isFirstLaunch: Bool {
 		let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
-		if !launchedBefore  {
+		if !launchedBefore {
 			NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
 			NSUserDefaults.standardUserDefaults().synchronize()
 		}
@@ -31,8 +31,8 @@ extension AppDelegate {
 		if isFirstLaunch {
 			//Show onboarding if first launch
 			if let onboardingControllerObject = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomeController") as? WelcomeController {
-				self.window?.rootViewController = onboardingControllerObject
-				self.window?.makeKeyAndVisible()
+				window?.rootViewController = onboardingControllerObject
+				window?.makeKeyAndVisible()
 			}
 		}
 		return true

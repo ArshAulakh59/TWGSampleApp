@@ -9,6 +9,9 @@
 import UIKit
 
 //MARK:- Global Declarations
+//Typealias
+typealias PictureData = (picture: UIImage, caption: String)
+
 //Constant
 let configurationUpdatedKey = "ConfigurationUpdated"
 
@@ -45,6 +48,3 @@ enum Color: Int {
 		}
 	}
 }
-
-//Typealias
-typealias PictureData = (picture: UIImage, caption: String)

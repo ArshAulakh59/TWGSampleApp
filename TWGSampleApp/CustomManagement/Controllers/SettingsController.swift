@@ -166,6 +166,7 @@ extension SettingsController {
 			}
 		}
 		
+		//Perform options updations
 		updateOptions(configuration.themeColorOne, themeColorTwoSegmentControl)
 		updateOptions(configuration.themeColorTwo, themeColorOneSegmentColor)
 	}
