@@ -62,7 +62,7 @@ extension WelcomeController {
 		configurationsInfoLabel.textColor = configuration.onboardingConfiguration.labelsColor
 		
 		//Set Button Colors
-		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor ?? Color.Blue.values.color, forState: .Normal)
+		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor, forState: .Normal)
 		getStartedButton.backgroundColor = configuration.onboardingConfiguration.buttonBackgroundColor
 		
 		//Set Page Control Color

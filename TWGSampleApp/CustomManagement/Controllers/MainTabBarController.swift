@@ -38,7 +38,7 @@ extension MainTabController {
 		
 		//Get Updated Attributes
 		let tabBarButtonItemsTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: Color.Gray.values.color]
-		let tabBarButtonItemsSelectedTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: configuration.themeColorTwo ?? Color.Blue.values.color]
+		let tabBarButtonItemsSelectedTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: configuration.themeColorTwo]
 		
 		//Set Updated Attributes
 		UITabBarItem.appearanceWhenContainedInInstancesOfClasses([MainTabController.self]).setTitleTextAttributes(tabBarButtonItemsTitleTextAttributes, forState: .Normal)
