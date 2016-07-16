@@ -32,12 +32,13 @@ extension MainTabController {
 
 	//MARK: Configurations
 	func applyConfigurations() {
-		//Set Tab Bar Tint Color
+		//Set Tab Bar Colors
+		tabBar.barTintColor = configuration.themeColorOne
 		tabBar.tintColor = configuration.themeColorTwo
 		
 		//Get Updated Attributes
-		let tabBarButtonItemsTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: Color.Gray.colorValue]
-		let tabBarButtonItemsSelectedTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: configuration.themeColorTwo ?? Color.Blue.colorValue]
+		let tabBarButtonItemsTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: Color.Gray.values.color]
+		let tabBarButtonItemsSelectedTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: configuration.themeColorTwo ?? Color.Blue.values.color]
 		
 		//Set Updated Attributes
 		UITabBarItem.appearanceWhenContainedInInstancesOfClasses([MainTabController.self]).setTitleTextAttributes(tabBarButtonItemsTitleTextAttributes, forState: .Normal)

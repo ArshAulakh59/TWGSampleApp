@@ -23,6 +23,9 @@ class WelcomeController: UIViewController {
 	@IBOutlet weak var getStartedButton: UIButton!
 	@IBOutlet weak var pageControl: UIPageControl!
 	
+	//Variables
+	var isDismissable: Bool = false
+	
 	//MARK: Deinitilization
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -34,8 +37,15 @@ extension WelcomeController {
 	//MARK: System
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		applyInitialConfigurations()
 		applyConfigurations()
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+	}
+	
+	//MARK: Initial Configuration
+	func applyInitialConfigurations() {
+		getStartedButton.setTitle(isDismissable ? "Dismiss" : "Get Started", forState: .Normal)
+		getStartedButton.addTarget(self, action: (isDismissable ? #selector(dismissOnboardingController) : #selector(proceedToGallery)), forControlEvents: .TouchUpInside)
 	}
 	
 	//MARK: Apply Configurations
@@ -52,7 +62,7 @@ extension WelcomeController {
 		configurationsInfoLabel.textColor = configuration.onboardingConfiguration.labelsColor
 		
 		//Set Button Colors
-		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor ?? Color.Blue.colorValue, forState: .Normal)
+		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor ?? Color.Blue.values.color, forState: .Normal)
 		getStartedButton.backgroundColor = configuration.onboardingConfiguration.buttonBackgroundColor
 		
 		//Set Page Control Color
@@ -66,5 +76,18 @@ extension WelcomeController: UIScrollViewDelegate {
 	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		//Set Current Page Indicator
 		pageControl.currentPage = Int(scrollView.currentPage)
+	}
+}
+
+extension WelcomeController {
+	//MARK: Handle Button Action
+	func dismissOnboardingController() {
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	
+	func proceedToGallery() {
+		if let tabController = storyboard?.instantiateViewControllerWithIdentifier("MainTabController") as? MainTabController {
+			presentViewController(tabController, animated: true, completion: nil)
+		}
 	}
 }

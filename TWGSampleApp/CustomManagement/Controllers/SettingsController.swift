@@ -8,11 +8,36 @@
 
 import UIKit
 
+//MARK:- Interface
 class SettingsController: UITableViewController {
+	//MARK: Properties
+	//Outlets
+	@IBOutlet weak var defaultThemeButton: UIButton!
 	@IBOutlet weak var themeColorOneLabel: UILabel!
 	@IBOutlet weak var themeColorOneSegmentColor: UISegmentedControl!
 	@IBOutlet weak var themeColorTwoLabel: UILabel!
 	@IBOutlet weak var themeColorTwoSegmentControl: UISegmentedControl!
+	@IBOutlet weak var checkOnboardingButton: UIButton!
+	
+	//Variables
+	var showCurrentSelectionForSegmentControl = { (color: UIColor, sender: UISegmentedControl) in
+		switch color {
+		case Color.Red.values.color:
+			sender.selectedSegmentIndex = Color.Red.values.index
+		case Color.Blue.values.color:
+			sender.selectedSegmentIndex = Color.Blue.values.index
+		case Color.Gray.values.color:
+			sender.selectedSegmentIndex = Color.Gray.values.index
+		case Color.Green.values.color:
+			sender.selectedSegmentIndex = Color.Green.values.index
+		case Color.White.values.color:
+			sender.selectedSegmentIndex = Color.White.values.index
+		case Color.Yellow.values.color:
+			sender.selectedSegmentIndex = Color.Yellow.values.index
+		default:
+			return
+		}
+	}
 	
 	//MARK: Deinitilization
 	deinit {
@@ -28,6 +53,14 @@ extension SettingsController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
 	}
 	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		showCurrentSelections()
+		updateAvailableOptionsByCurrentConfiguration()
+	}
+}
+
+extension SettingsController {
 	//MARK: Apply Configurations
 	func applyConfigurations() {
 		tableView.backgroundColor = configuration.settingsConfiguration.backgroundColor
@@ -42,36 +75,102 @@ extension SettingsController {
 		//Set Segment Control Color
 		themeColorOneSegmentColor.tintColor = configuration.settingsConfiguration.themeOneSegmentTintColor
 		themeColorTwoSegmentControl.tintColor = configuration.settingsConfiguration.themeTwoSegmentTintColor
+		
+		//Set Buttons Colors
+		defaultThemeButton.backgroundColor = configuration.themeColorTwo
+		defaultThemeButton.setTitleColor(configuration.themeColorOne, forState: .Normal)
+		checkOnboardingButton.backgroundColor = configuration.themeColorTwo
+		checkOnboardingButton.setTitleColor(configuration.themeColorOne, forState: .Normal)
+	}
+}
+
+extension SettingsController {
+	//MARK: Manage Reset To Default Theme
+	@IBAction func resetToDefaultThemeClicked(sender: UIButton) {
+		configuration = Configuration()
+		showCurrentSelections()
+		updateAvailableOptionsByCurrentConfiguration()
+	}
+}
+
+extension SettingsController {
+	//MARK: Manage Theme Change
+	@IBAction func colorSelected(sender: UISegmentedControl) {
+		guard let color = Color(rawValue: sender.selectedSegmentIndex) where sender.selectedSegmentIndex >= 0 && sender.selectedSegmentIndex <= 5 else {
+			return
+		}
+		
+		//Update Configuration
+		var oldConfiguration = configuration
+		if sender.tag == 1 {
+			oldConfiguration.themeColorOne = color.values.color
+		} else  {
+			oldConfiguration.themeColorTwo = color.values.color
+		}
+		
+		//Check For same colors in the theme
+		guard oldConfiguration.themeColorOne != oldConfiguration.themeColorTwo else {
+			return
+		}
+		configuration = Configuration(themeColorOne: oldConfiguration.themeColorOne, themeColorTwo: oldConfiguration.themeColorTwo)
+		updateAvailableOptionsByCurrentConfiguration()
+	}
+}
+
+extension SettingsController {
+	//MARK: Manage Selections And Options
+	func showCurrentSelections() {
+		showCurrentSelectionForSegmentControl(configuration.themeColorOne, themeColorOneSegmentColor)
+		showCurrentSelectionForSegmentControl(configuration.themeColorTwo, themeColorTwoSegmentControl)
 	}
 	
-	//MARK: Changed Theme Color
-	@IBAction func colorSelected(sender: UISegmentedControl) {
-		guard sender.selectedSegmentIndex >= 0 && sender.selectedSegmentIndex <= 5 else {
-			return
+	func updateAvailableOptionsByCurrentConfiguration() {
+		//Show Selections If user leaves the segment unselected
+		if !themeColorOneSegmentColor.selected {
+			showCurrentSelectionForSegmentControl(configuration.themeColorOne, themeColorOneSegmentColor)
+		}
+		if !themeColorTwoSegmentControl.selected {
+			showCurrentSelectionForSegmentControl(configuration.themeColorTwo, themeColorTwoSegmentControl)
 		}
 		
-		var color: UIColor
-		switch sender.selectedSegmentIndex {
-		case 0:
-			color = Color.Red.colorValue
-		case 1:
-			color = Color.Blue.colorValue
-		case 2:
-			color = Color.Gray.colorValue
-		case 3:
-			color = Color.Green.colorValue
-		case 4:
-			color = Color.White.colorValue
-		case 5:
-			color = Color.Yellow.colorValue
-		default:
-			return
+		//Update Options
+		let updateOptions = { (color: UIColor, sender: UISegmentedControl) in
+			//Enable All Options
+			for index in 0..<sender.numberOfSegments {
+				sender.setEnabled(true, forSegmentAtIndex: index)
+			}
+			
+			//Disable Unavailable Option
+			switch color {
+			case Color.Red.values.color:
+				sender.setEnabled(false, forSegmentAtIndex: Color.Red.values.index)
+			case Color.Blue.values.color:
+				sender.setEnabled(false, forSegmentAtIndex: Color.Blue.values.index)
+			case Color.Gray.values.color:
+				sender.setEnabled(false, forSegmentAtIndex: Color.Gray.values.index)
+			case Color.Green.values.color:
+				sender.setEnabled(false, forSegmentAtIndex: Color.Green.values.index)
+			case Color.White.values.color:
+				sender.setEnabled(false, forSegmentAtIndex: Color.White.values.index)
+			case Color.Yellow.values.color:
+				sender.setEnabled(false, forSegmentAtIndex: Color.Yellow.values.index)
+			default:
+				sender.setEnabled(false, forSegmentAtIndex: Color.Yellow.values.index)
+				return
+			}
 		}
 		
-		if sender.tag == 1 {
-			configuration.themeColorOne = color
-		} else  {
-			configuration.themeColorTwo = color
+		updateOptions(configuration.themeColorOne, themeColorTwoSegmentControl)
+		updateOptions(configuration.themeColorTwo, themeColorOneSegmentColor)
+	}
+}
+
+extension SettingsController {
+	//MARK: Check Onboarding Flow
+	@IBAction func checkOnboardingFlowClicked(sender: AnyObject) {
+		if let welcomeObject = storyboard?.instantiateViewControllerWithIdentifier("WelcomeController") as? WelcomeController {
+			welcomeObject.isDismissable = true
+			presentViewController(welcomeObject, animated: true, completion: nil)
 		}
 	}
 }

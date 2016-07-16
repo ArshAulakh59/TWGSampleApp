@@ -13,19 +13,36 @@ import UIKit
 let configurationUpdatedKey = "ConfigurationUpdated"
 
 //Variables
-var configuration: Configuration = Configuration()
+var configuration: Configuration = Configuration() {
+	didSet {
+		NSNotificationCenter.defaultCenter().postNotificationName(configurationUpdatedKey, object: nil)
+	}
+}
 
-//Colors
+//Enumerations
 enum Color: Int {
-	case Red = 0xD0021B
-	case Blue = 0x0177C0
-	case Gray = 0x2C384B
-	case Green = 0x21AC73
-	case White = 0xFFFFFF
-	case Yellow = 0xE3A522
+	case Red = 0
+	case Blue = 1
+	case Gray = 2
+	case Green = 3
+	case White = 4
+	case Yellow = 5
 	
-	var colorValue: UIColor {
-		return UIColor(hex: self.rawValue)
+	var values: (index: Int, color: UIColor) {
+		switch self {
+		case .Red:
+			return (self.rawValue, UIColor(hex: 0xD0021B))
+		case .Blue:
+			return (self.rawValue, UIColor(hex: 0x0177C0))
+		case .Gray:
+			return (self.rawValue, UIColor.lightGrayColor())
+		case .Green:
+			return (self.rawValue, UIColor(hex: 0x21AC73))
+		case .White:
+			return (self.rawValue, UIColor.whiteColor())
+		case .Yellow:
+			return (self.rawValue, UIColor(hex: 0xE3A522))
+		}
 	}
 }
 

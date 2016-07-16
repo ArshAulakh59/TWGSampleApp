@@ -10,23 +10,15 @@ import UIKit
 import Foundation
 
 struct Configuration {
-	var themeColorOne: UIColor {
-		didSet {
-			NSNotificationCenter.defaultCenter().postNotificationName(configurationUpdatedKey, object: nil)
-		}
-	}
-	var themeColorTwo: UIColor {
-		didSet {
-			NSNotificationCenter.defaultCenter().postNotificationName(configurationUpdatedKey, object: nil)
-		}
-	}
+	var themeColorOne: UIColor
+	var themeColorTwo: UIColor
 	var onboardingConfiguration: OnboardingConfiguration
 	var galleryControllerConfiguration: GalleryConfiguration
 	var galleryCellConfiguration: GalleryCellConfiguration
 	var settingsConfiguration: SettingsConfiguration
 	
 	//MARK: Initialisation
-	init(themeColorOne: UIColor = .whiteColor(), themeColorTwo: UIColor = Color.Red.colorValue) {
+	init(themeColorOne: UIColor = Color.White.values.color, themeColorTwo: UIColor = Color.Green.values.color) {
 		self.themeColorOne = themeColorOne
 		self.themeColorTwo = themeColorTwo
 		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: themeColorTwo, labelsColor: themeColorOne, buttonTextColor: themeColorTwo, buttonBackgroundColor: themeColorOne, pageControlTintColor: themeColorOne)
