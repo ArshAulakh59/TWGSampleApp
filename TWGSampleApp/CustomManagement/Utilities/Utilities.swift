@@ -8,18 +8,18 @@
 
 import UIKit
 
-//MARK:- Globals
-//Constants
+//MARK:- Global Declarations
+//Constant
 let configurationUpdatedKey = "ConfigurationUpdated"
 
-//Variables
+//Variable
 var configuration: Configuration = Configuration() {
 	didSet {
 		NSNotificationCenter.defaultCenter().postNotificationName(configurationUpdatedKey, object: nil)
 	}
 }
 
-//Enumerations
+//Enumeration
 enum Color: Int {
 	case Red = 0
 	case Blue = 1
@@ -46,5 +46,5 @@ enum Color: Int {
 	}
 }
 
-//Typealises
+//Typealias
 typealias PictureData = (picture: UIImage, caption: String)

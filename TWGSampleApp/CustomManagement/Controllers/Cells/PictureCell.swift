@@ -76,8 +76,8 @@ extension PictureCell {
 	func addParallaxToImageView(imageView: UIImageView) {
 		// Set horizontal effect
 		let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-		horizontalMotionEffect.minimumRelativeValue = -8
-		horizontalMotionEffect.maximumRelativeValue = 8
+		horizontalMotionEffect.minimumRelativeValue = -12
+		horizontalMotionEffect.maximumRelativeValue = 12
 		
 		// Add both effects to your view
 		imageView.addMotionEffect(horizontalMotionEffect)

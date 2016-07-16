@@ -80,7 +80,7 @@ extension WelcomeController: UIScrollViewDelegate {
 }
 
 extension WelcomeController {
-	//MARK: Handle Button Action
+	//MARK: Handle Button Actions
 	func dismissOnboardingController() {
 		dismissViewControllerAnimated(true, completion: nil)
 	}

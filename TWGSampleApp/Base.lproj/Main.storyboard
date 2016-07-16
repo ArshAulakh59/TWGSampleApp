@@ -240,7 +240,7 @@
                                             <rect key="frame" x="8" y="8" width="584" height="284"/>
                                             <subviews>
                                                 <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-c7-ejC">
-                                                    <rect key="frame" x="-12" y="0.0" width="608" height="250"/>
+                                                    <rect key="frame" x="-20" y="0.0" width="624" height="250"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="250" id="hpQ-bH-ZDn"/>
                                                     </constraints>
@@ -287,13 +287,15 @@
                                             <constraints>
                                                 <constraint firstItem="y54-ZK-PAg" firstAttribute="trailing" secondItem="NJ8-bH-i1v" secondAttribute="trailing" id="6Kt-cE-1L1"/>
                                                 <constraint firstItem="NJ8-bH-i1v" firstAttribute="trailing" secondItem="dE8-c7-ejC" secondAttribute="trailing" constant="-12" id="AOO-7Q-ug3"/>
-                                                <constraint firstAttribute="trailing" secondItem="dE8-c7-ejC" secondAttribute="trailing" constant="-12" id="GVz-8z-iwO"/>
+                                                <constraint firstItem="NJ8-bH-i1v" firstAttribute="leading" secondItem="SdK-vt-IMJ" secondAttribute="leading" id="Eey-yx-con"/>
+                                                <constraint firstAttribute="trailing" secondItem="dE8-c7-ejC" secondAttribute="trailing" constant="-20" id="GVz-8z-iwO"/>
                                                 <constraint firstAttribute="bottom" secondItem="NJ8-bH-i1v" secondAttribute="bottom" id="Gaa-cE-aa2"/>
                                                 <constraint firstItem="y54-ZK-PAg" firstAttribute="bottom" secondItem="NJ8-bH-i1v" secondAttribute="bottom" id="KqS-Oh-3xy"/>
                                                 <constraint firstItem="NJ8-bH-i1v" firstAttribute="leading" secondItem="dE8-c7-ejC" secondAttribute="leading" constant="12" id="X7b-gY-GKS"/>
                                                 <constraint firstItem="y54-ZK-PAg" firstAttribute="leading" secondItem="NJ8-bH-i1v" secondAttribute="leading" id="atO-V9-o7G"/>
-                                                <constraint firstItem="dE8-c7-ejC" firstAttribute="leading" secondItem="SdK-vt-IMJ" secondAttribute="leading" constant="-12" id="ieF-Gs-Qu9"/>
+                                                <constraint firstItem="dE8-c7-ejC" firstAttribute="leading" secondItem="SdK-vt-IMJ" secondAttribute="leading" constant="-20" id="ieF-Gs-Qu9"/>
                                                 <constraint firstItem="NJ8-bH-i1v" firstAttribute="top" secondItem="dE8-c7-ejC" secondAttribute="bottom" id="khq-RU-jdk"/>
+                                                <constraint firstAttribute="trailing" secondItem="NJ8-bH-i1v" secondAttribute="trailing" id="nfd-69-I2g"/>
                                                 <constraint firstItem="y54-ZK-PAg" firstAttribute="top" secondItem="NJ8-bH-i1v" secondAttribute="top" id="tAX-m1-Vf4"/>
                                                 <constraint firstItem="dE8-c7-ejC" firstAttribute="top" secondItem="SdK-vt-IMJ" secondAttribute="top" id="vsX-9Z-HKd"/>
                                             </constraints>
@@ -302,6 +304,12 @@
                                                     <integer key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="AOO-7Q-ug3"/>
+                                                    <exclude reference="X7b-gY-GKS"/>
+                                                </mask>
+                                            </variation>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

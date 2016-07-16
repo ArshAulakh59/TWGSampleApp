@@ -35,7 +35,6 @@ extension AppDelegate {
 				self.window?.makeKeyAndVisible()
 			}
 		}
-		
 		return true
 	}
 }
