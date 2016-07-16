@@ -30,7 +30,7 @@ extension MainTabController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
 	}
 
-	//MARK: Configurations
+	//MARK: Apply Configurations
 	func applyConfigurations() {
 		//Set Tab Bar Colors
 		tabBar.barTintColor = configuration.themeColorOne
