@@ -42,7 +42,7 @@ extension TWGSampleAppUITests {
 		let settingsTable = app.tables
 		
 		//Fetch Cell
-		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Colo One:").element
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Color One:").element
 		
 		//Get Segment Control
 		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
@@ -60,7 +60,27 @@ extension TWGSampleAppUITests {
 		yellowButton.tap()
 	}
 	
+	//Test Resetting Theme
 	func testResettingThemeToDefault() {
+		//Get Application
+		let app = XCUIApplication()
 		
+		//Get Tab bar and go to settings
+		let tabBar = app.tabBars
+		let settingsButton = tabBar.buttons["Settings"]
+		settingsButton.tap()
+		
+		//Fetch Table
+		let settingsTable = app.tables
+		
+		//Change to custom theme before resetting
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Color One:").element
+		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
+		let redButton = themeColorTwoSegmentControl.buttons["Red"]
+		redButton.tap()
+		
+		//Reset To Default Theme
+		let defaultThemeButton = settingsTable.buttons["Use Default Theme"]
+		defaultThemeButton.tap()
 	}
 }
