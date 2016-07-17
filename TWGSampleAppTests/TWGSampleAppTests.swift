@@ -11,6 +11,8 @@ import XCTest
 
 //MARK:- Interface
 class TWGSampleAppTests: XCTestCase {
+	//MARK: Properties
+	//Constants
     let appDelegateObject = AppDelegate()
 	let picturesControllerObject = PicturesController()
 }
@@ -20,11 +22,9 @@ extension TWGSampleAppTests {
 	//MARK: System
 	override func setUp() {
 		super.setUp()
-		// Put setup code here. This method is called before the invocation of each test method in the class.
 	}
 	
 	override func tearDown() {
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
 		super.tearDown()
 	}
 }
@@ -33,33 +33,11 @@ extension TWGSampleAppTests {
 	//MARK: Tests
 	//Test First Launch And Onboarding
 	func testFirstLaunch() {
-		if NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore") {
-			XCTAssertTrue(appDelegateObject.isFirstLaunch, "Is Not First Time Launch")
-		} else {
-			XCTAssertFalse(appDelegateObject.isFirstLaunch, "Is First Time Launch")
-		}
-	}
-	
-	func testOnboarding() {
-		if appDelegateObject.isFirstLaunch {
-			
-		} else {
-			XCTAssertNil("", "")
-		}
+		XCTAssert(appDelegateObject.isFirstLaunch)
 	}
 	
 	//Test Gallery
-	func testNumberOfPicturesInGallery() {
-		
-	}
-}
-
-extension TWGSampleAppTests {
-	//MARK: Performance Test
-	func sampleTestPerformanceMethod() {
-		// This is an example of a performance test case.
-		self.measureBlock {
-			// Put the code you want to measure the time of here.
-		}
+	func testGalleryNotEmpty() {
+		XCTAssertGreaterThan(picturesControllerObject.picturesDatasource.count, 0)
 	}
 }
