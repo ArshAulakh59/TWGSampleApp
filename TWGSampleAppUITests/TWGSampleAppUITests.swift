@@ -28,34 +28,6 @@ extension TWGSampleAppUITests {
 
 extension TWGSampleAppUITests {
 	//MARK: Tests
-	//Test Onboarding Flow
-    func testOnboardingFlow() {
-		//Scroll Onboarding Scroll View
-		let scrollViewsQuery = XCUIApplication().scrollViews
-		let onboardingScrollView = scrollViewsQuery.childrenMatchingType(.Other).element
-		onboardingScrollView.childrenMatchingType(.Other).elementBoundByIndex(0).swipeLeft()
-		onboardingScrollView.childrenMatchingType(.Other).elementBoundByIndex(1).tap()
-		onboardingScrollView.childrenMatchingType(.Other).elementBoundByIndex(2).tap()
-		
-		//Go to Gallery From Onboarding
-		let getStartedButton = scrollViewsQuery.otherElements.buttons["Get Started"]
-		getStartedButton.tap()
-	}
-	
-	//Test Table Scrolling Performance
-	func testTableScrolling() {
-		let table = XCUIApplication().tables.elementBoundByIndex(0)
-		XCTAssertLessThanOrEqual(table.cells.count, 100)
-		XCTAssertLessThanOrEqual(table.tableRows.count, 100)
-		
-		//Only Do this check if cells less than 100
-		measureBlock {
-			for _ in 1...5 {
-				table.swipeUp()
-			}
-		}
-	}
-
 	//Test Theme Change
 	func testThemeChange() {
 		//Get Table
@@ -78,8 +50,14 @@ extension TWGSampleAppUITests {
 	}
 	
 	func testResettingThemeToDefault() {
-	}
-	
-	func testOnboardingFlowFromSettings() {
+		let app = XCUIApplication()
+		
+		let tabBarsQuery = app.tabBars
+		let settingsButton = tabBarsQuery.buttons["Settings"]
+		settingsButton.tap()
+		
+		let tablesQuery = app.tables
+		tablesQuery.cells.containingType(.StaticText, identifier:"Theme Color One:").childrenMatchingType(.SegmentedControl).elementBoundByIndex(0).buttons["Blue"].tap()
+		tablesQuery.buttons["Use Default Theme"].tap()
 	}
 }

@@ -31,12 +31,7 @@ extension TWGSampleAppTests {
 
 extension TWGSampleAppTests {
 	//MARK: Tests
-	//Test First Launch And Onboarding
-	func testFirstLaunch() {
-		XCTAssert(appDelegateObject.isFirstLaunch)
-	}
-	
-	//Test Gallery
+	//Test Gallery Objects
 	func testGalleryNotEmpty() {
 		XCTAssertGreaterThan(picturesControllerObject.picturesDatasource.count, 0)
 	}
