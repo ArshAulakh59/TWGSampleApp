@@ -30,34 +30,37 @@ extension TWGSampleAppUITests {
 	//MARK: Tests
 	//Test Theme Change
 	func testThemeChange() {
-		//Get Table
-		let tablesQuery = XCUIApplication().tables
+		//Get Application
+		let app = XCUIApplication()
 		
-		//Get Theme One Cell
-		let themeColorOneCellsQuery = tablesQuery.cells.containingType(.StaticText, identifier:"Theme Color One:")
-		//Get Theme Color One Selector
-		let segmentedControl = themeColorOneCellsQuery.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
-		//Change Theme Color One
-		segmentedControl.buttons["Red"].tap()
+		//Get Tab bar and go to settings
+		let tabBar = app.tabBars
+		let settingsButton = tabBar.buttons["Settings"]
+		settingsButton.tap()
 		
-		//Get Theme Color Two Selector
-		let segmentedControl2 = themeColorOneCellsQuery.childrenMatchingType(.SegmentedControl).elementBoundByIndex(0)
-		//Change Theme Color One
-		segmentedControl2.buttons["Yellow"].tap()
-		segmentedControl.buttons["Green"].tap()
-		segmentedControl2.buttons["White"].tap()
-		segmentedControl.buttons["Yellow"].tap()
+		//Fetch Table
+		let settingsTable = app.tables
+		
+		//Fetch Cell
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Colo One:").element
+		
+		//Get Segment Control
+		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
+		
+		//Change Theme Second Color
+		let redButton = themeColorTwoSegmentControl.buttons["Red"]
+		redButton.tap()
+		let blueButton = themeColorTwoSegmentControl.buttons["Blue"]
+		blueButton.tap()
+		let grayButton = themeColorTwoSegmentControl.buttons["Gray"]
+		grayButton.tap()
+		let greenButton = themeColorTwoSegmentControl.buttons["Green"]
+		greenButton.tap()
+		let yellowButton = themeColorTwoSegmentControl.buttons["Yellow"]
+		yellowButton.tap()
 	}
 	
 	func testResettingThemeToDefault() {
-		let app = XCUIApplication()
 		
-		let tabBarsQuery = app.tabBars
-		let settingsButton = tabBarsQuery.buttons["Settings"]
-		settingsButton.tap()
-		
-		let tablesQuery = app.tables
-		tablesQuery.cells.containingType(.StaticText, identifier:"Theme Color One:").childrenMatchingType(.SegmentedControl).elementBoundByIndex(0).buttons["Blue"].tap()
-		tablesQuery.buttons["Use Default Theme"].tap()
 	}
 }

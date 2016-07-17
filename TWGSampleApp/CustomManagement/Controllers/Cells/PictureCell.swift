@@ -48,9 +48,6 @@ extension PictureCell {
 	}
 	
 	func applyConfigurations() {
-		if configuration.galleryCellConfiguration.allowParallax {
-			addParallaxToImageView(pictureImageView)
-		}
 		captionLabel.textColor = configuration.galleryCellConfiguration.captionLabelColor
 	}
 }
@@ -68,18 +65,5 @@ extension PictureCell {
 			self.pictureImageView.image = data.picture
 			self.backgroundImageView.image = data.picture
 		}
-	}
-}
-
-extension PictureCell {
-	//MARK: Handle parallax
-	func addParallaxToImageView(imageView: UIImageView) {
-		// Set horizontal effect
-		let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-		horizontalMotionEffect.minimumRelativeValue = -12
-		horizontalMotionEffect.maximumRelativeValue = 12
-		
-		// Add both effects to your view
-		imageView.addMotionEffect(horizontalMotionEffect)
 	}
 }

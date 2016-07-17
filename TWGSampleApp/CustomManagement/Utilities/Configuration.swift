@@ -24,7 +24,7 @@ struct Configuration {
 		self.themeColorTwo = themeColorTwo
 		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: themeColorTwo, labelsColor: themeColorOne, buttonTextColor: themeColorTwo, buttonBackgroundColor: themeColorOne, pageControlTintColor: themeColorOne)
 		self.galleryControllerConfiguration = GalleryConfiguration(backgroundColor: themeColorOne, navigationBarTintColor: themeColorTwo, navigationBarTextColor: themeColorOne)
-		self.galleryCellConfiguration = GalleryCellConfiguration(captionLabelColor: themeColorTwo, allowParallax: true)
+		self.galleryCellConfiguration = GalleryCellConfiguration(captionLabelColor: themeColorTwo)
 		self.settingsConfiguration = SettingsConfiguration(backgroundColor: themeColorOne, navigationBarTintColor: themeColorTwo, navigationBarTextColor: themeColorOne, themeOneLabelColor: themeColorTwo, themeOneSegmentTintColor: themeColorTwo, themeTwoLabelColor: themeColorTwo, themeTwoSegmentTintColor: themeColorTwo)
 	}
 	
@@ -57,7 +57,6 @@ struct GalleryConfiguration {
 //MARK: Gallery Cell Configuration
 struct GalleryCellConfiguration {
 	var captionLabelColor: UIColor
-	var allowParallax: Bool = false
 }
 
 //MARK: Settings Configuration
