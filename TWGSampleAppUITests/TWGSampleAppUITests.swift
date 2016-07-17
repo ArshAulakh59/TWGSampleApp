@@ -45,12 +45,14 @@ extension TWGSampleAppUITests {
 	//Test Table Scrolling Performance
 	func testTableScrolling() {
 		let table = XCUIApplication().tables.elementBoundByIndex(0)
+		XCTAssertLessThanOrEqual(table.cells.count, 100)
 		XCTAssertLessThanOrEqual(table.tableRows.count, 100)
 		
 		//Only Do this check if cells less than 100
 		measureBlock {
-			let lastCell = table.cells.elementBoundByIndex(table.cells.count-1)
-			table.scrollToElement(lastCell)
+			for _ in 1...5 {
+				table.swipeUp()
+			}
 		}
 	}
 
@@ -76,32 +78,8 @@ extension TWGSampleAppUITests {
 	}
 	
 	func testResettingThemeToDefault() {
-		//Check Default
-		
 	}
 	
 	func testOnboardingFlowFromSettings() {
-		//Fetch And Click Onboarding Button
-		
-		
-		//Click
-		let element = XCUIApplication().childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).element.childrenMatchingType(.Other).element
-		element.tap()
-		element.tap()
-		element.tap()
-		XCUIApplication().scrollViews.otherElements.buttons["Dismiss"].tap()
-	}
-}
-
-extension XCUIElement {
-	func scrollToElement(element: XCUIElement) {
-		while !element.visible() {
-			swipeUp()
-		}
-	}
-	
-	func visible() -> Bool {
-		guard self.exists && !CGRectIsEmpty(self.frame) else { return false }
-		return CGRectContainsRect(XCUIApplication().windows.elementBoundByIndex(0).frame, self.frame)
 	}
 }
