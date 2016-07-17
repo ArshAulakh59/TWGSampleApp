@@ -9,23 +9,9 @@
 import XCTest
 
 //MARK:- Interface
-class TWGSampleAppUITests: XCTestCase {
-}
+class TWGSampleAppUITests: XCTestCase { }
 
 //MARK:- Implementation
-extension TWGSampleAppUITests {
-	//MARK: System
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-		XCUIApplication().launch()
-	}
-    
-    override func tearDown() {
-       super.tearDown()
-    }
-}
-
 extension TWGSampleAppUITests {
 	//MARK: Tests
 	//Test Theme Change
