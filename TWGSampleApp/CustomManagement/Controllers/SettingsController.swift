@@ -76,10 +76,10 @@ extension SettingsController {
 		themeColorTwoSegmentControl.tintColor = configuration.settingsConfiguration.themeTwoSegmentTintColor
 		
 		//Set Buttons Colors
-		defaultThemeButton.backgroundColor = configuration.themeColorTwo
-		defaultThemeButton.setTitleColor(configuration.themeColorOne, forState: .Normal)
-		checkOnboardingButton.backgroundColor = configuration.themeColorTwo
-		checkOnboardingButton.setTitleColor(configuration.themeColorOne, forState: .Normal)
+		defaultThemeButton.backgroundColor = configuration.secondaryThemeColor
+		defaultThemeButton.setTitleColor(configuration.mainThemeColor, forState: .Normal)
+		checkOnboardingButton.backgroundColor = configuration.secondaryThemeColor
+		checkOnboardingButton.setTitleColor(configuration.mainThemeColor, forState: .Normal)
 	}
 }
 
@@ -101,16 +101,14 @@ extension SettingsController {
 		//Update Configuration
 		var oldConfiguration = configuration
 		if sender.tag == 1 {
-			oldConfiguration.themeColorOne = color.values.color
-		} else  {
-			oldConfiguration.themeColorTwo = color.values.color
+			oldConfiguration.mainThemeColor = color.values.color
+		} else {
+			let color = color.values.color
+			oldConfiguration.secondaryThemeColor = color
 		}
 		
 		//Check For same colors in the theme
-		guard oldConfiguration.themeColorOne != oldConfiguration.themeColorTwo else {
-			return
-		}
-		configuration = Configuration(themeColorOne: oldConfiguration.themeColorOne, themeColorTwo: oldConfiguration.themeColorTwo)
+		configuration = Configuration(mainThemeColor: oldConfiguration.mainThemeColor, secondaryThemeColor: oldConfiguration.secondaryThemeColor)
 		updateAvailableOptionsByCurrentConfiguration()
 	}
 	
@@ -126,17 +124,17 @@ extension SettingsController {
 extension SettingsController {
 	//MARK: Additionals
 	func showCurrentSelections() {
-		showCurrentSelectionForSegmentControl(configuration.themeColorOne, themeColorOneSegmentColor)
-		showCurrentSelectionForSegmentControl(configuration.themeColorTwo, themeColorTwoSegmentControl)
+		showCurrentSelectionForSegmentControl(configuration.mainThemeColor, themeColorOneSegmentColor)
+		showCurrentSelectionForSegmentControl(configuration.secondaryThemeColor, themeColorTwoSegmentControl)
 	}
 	
 	func updateAvailableOptionsByCurrentConfiguration() {
 		//Show Selections If user leaves the segment unselected
 		if !themeColorOneSegmentColor.selected {
-			showCurrentSelectionForSegmentControl(configuration.themeColorOne, themeColorOneSegmentColor)
+			showCurrentSelectionForSegmentControl(configuration.mainThemeColor, themeColorOneSegmentColor)
 		}
 		if !themeColorTwoSegmentControl.selected {
-			showCurrentSelectionForSegmentControl(configuration.themeColorTwo, themeColorTwoSegmentControl)
+			showCurrentSelectionForSegmentControl(configuration.secondaryThemeColor, themeColorTwoSegmentControl)
 		}
 		
 		//Update Options
@@ -167,7 +165,7 @@ extension SettingsController {
 		}
 		
 		//Perform options updations
-		updateOptions(configuration.themeColorOne, themeColorTwoSegmentControl)
-		updateOptions(configuration.themeColorTwo, themeColorOneSegmentColor)
+		updateOptions(configuration.mainThemeColor, themeColorTwoSegmentControl)
+		updateOptions(configuration.secondaryThemeColor, themeColorOneSegmentColor)
 	}
 }

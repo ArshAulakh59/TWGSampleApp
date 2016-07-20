@@ -31,14 +31,14 @@ extension TWGSampleAppUITests {
 		
 		//Get Tab bar and go to settings
 		let tabBar = app.tabBars
-		let settingsButton = tabBar.buttons["Settings"]
-		settingsButton.tap()
+		let customizeButton = tabBar.buttons["Customize"]
+		customizeButton.tap()
 		
 		//Fetch Table
 		let settingsTable = app.tables
 		
 		//Fetch Cell
-		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Color One:").element
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Primary Color:").element
 		
 		//Get Segment Control
 		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
@@ -63,20 +63,20 @@ extension TWGSampleAppUITests {
 		
 		//Get Tab bar and go to settings
 		let tabBar = app.tabBars
-		let settingsButton = tabBar.buttons["Settings"]
-		settingsButton.tap()
+		let customizeButton = tabBar.buttons["Customize"]
+		customizeButton.tap()
 		
 		//Fetch Table
 		let settingsTable = app.tables
 		
 		//Change to custom theme before resetting
-		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Color One:").element
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Secondary Color:").element
 		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
 		let redButton = themeColorTwoSegmentControl.buttons["Red"]
 		redButton.tap()
 		
 		//Reset To Default Theme
-		let defaultThemeButton = settingsTable.buttons["Use Default Theme"]
-		defaultThemeButton.tap()
+		let resetThemeButton = settingsTable.buttons["Reset Theme"]
+		resetThemeButton.tap()
 	}
 }

@@ -33,20 +33,25 @@ extension MainTabController {
 		//Configure Tab Bar
 		//Set Translucency
 		tabBar.translucent = false
-		
-		//Set Title Attributes
-		//Color.Gray.values.color
-		setTabBarItemsColor(UIColor.darkGrayColor(), forState: .Normal)
+		applyConfigurations()
 	}
 	
 	//MARK: Apply Configurations
 	func applyConfigurations() {
 		//Set Tab Bar Colors
-		tabBar.barTintColor = configuration.themeColorOne
-		tabBar.tintColor = configuration.themeColorTwo
+		tabBar.barTintColor = configuration.secondaryThemeColor
+		tabBar.tintColor = configuration.mainThemeColor
 		
 		//Set Updated Title Attributes
-		setTabBarItemsColor(configuration.themeColorTwo, forState: .Selected)
+		setTabBarItemsColor(configuration.secondaryThemeColor != Color.Gray.values.color ? Color.Gray.values.color : UIColor.darkTextColor().colorWithAlphaComponent(0.25), forState: .Normal)
+		setTabBarItemsColor(configuration.mainThemeColor, forState: .Selected)
+		
+		//Update Status Bar
+		if configuration.secondaryThemeColor == Color.White.values.color {
+			UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: false)
+		} else {
+			UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+		}
 	}
 }
 

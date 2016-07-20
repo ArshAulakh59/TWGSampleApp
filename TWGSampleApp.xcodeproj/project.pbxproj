@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA0BB42B1D3A43F6004AB967 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB42A1D3A43F6004AB967 /* SettingsController.swift */; };
+		FA0BB42B1D3A43F6004AB967 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB42A1D3A43F6004AB967 /* SettingsController.swift */; settings = {COMPILER_FLAGS = "-w"; }; };
 		FA0BB42D1D3A451B004AB967 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB42C1D3A451B004AB967 /* Configuration.swift */; };
 		FA0BB42F1D3A5D19004AB967 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BB42E1D3A5D19004AB967 /* Extensions.swift */; };
 		FA0BB4321D3AAB1D004AB967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0BB4301D3AAB1D004AB967 /* LaunchScreen.storyboard */; };

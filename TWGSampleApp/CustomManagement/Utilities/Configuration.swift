@@ -11,26 +11,26 @@ import Foundation
 
 //MARK: Configuration
 struct Configuration {
-	var themeColorOne: UIColor
-	var themeColorTwo: UIColor
+	var mainThemeColor: UIColor
+	var secondaryThemeColor: UIColor
 	var onboardingConfiguration: OnboardingConfiguration
 	var galleryControllerConfiguration: GalleryConfiguration
 	var galleryCellConfiguration: GalleryCellConfiguration
 	var settingsConfiguration: SettingsConfiguration
 	
 	//MARK: Initialisation
-	init(themeColorOne: UIColor = Color.White.values.color, themeColorTwo: UIColor = Color.Green.values.color) {
-		self.themeColorOne = themeColorOne
-		self.themeColorTwo = themeColorTwo
-		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: themeColorTwo, labelsColor: themeColorOne, buttonTextColor: themeColorTwo, buttonBackgroundColor: themeColorOne, pageControlTintColor: themeColorOne)
-		self.galleryControllerConfiguration = GalleryConfiguration(backgroundColor: themeColorOne, navigationBarTintColor: themeColorTwo, navigationBarTextColor: themeColorOne)
-		self.galleryCellConfiguration = GalleryCellConfiguration(captionLabelColor: themeColorTwo)
-		self.settingsConfiguration = SettingsConfiguration(backgroundColor: themeColorOne, navigationBarTintColor: themeColorTwo, navigationBarTextColor: themeColorOne, themeOneLabelColor: themeColorTwo, themeOneSegmentTintColor: themeColorTwo, themeTwoLabelColor: themeColorTwo, themeTwoSegmentTintColor: themeColorTwo)
+	init(mainThemeColor: UIColor = Color.Green.values.color, secondaryThemeColor: UIColor = Color.White.values.color) {
+		self.mainThemeColor = mainThemeColor
+		self.secondaryThemeColor = secondaryThemeColor
+		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: secondaryThemeColor, labelsColor: mainThemeColor, buttonTextColor: secondaryThemeColor, buttonBackgroundColor: mainThemeColor, pageControlTintColor: mainThemeColor)
+		self.galleryControllerConfiguration = GalleryConfiguration(backgroundColor: secondaryThemeColor, navigationBarTintColor: secondaryThemeColor, navigationBarTextColor: mainThemeColor)
+		self.galleryCellConfiguration = GalleryCellConfiguration(captionLabelColor: mainThemeColor)
+		self.settingsConfiguration = SettingsConfiguration(backgroundColor: secondaryThemeColor, navigationBarTintColor: secondaryThemeColor, navigationBarTextColor: mainThemeColor, themeOneLabelColor: mainThemeColor, themeOneSegmentTintColor: mainThemeColor, themeTwoLabelColor: mainThemeColor, themeTwoSegmentTintColor: mainThemeColor)
 	}
 	
-	init(themeColorOne: UIColor, themeColorTwo: UIColor, onboardingConfiguration: OnboardingConfiguration, galleryControllerConfiguration: GalleryConfiguration, galleryCellConfiguration: GalleryCellConfiguration, settingsConfiguration: SettingsConfiguration) {
-		self.themeColorOne = themeColorOne
-		self.themeColorTwo = themeColorTwo
+	init(mainThemeColor: UIColor, secondaryThemeColor: UIColor, onboardingConfiguration: OnboardingConfiguration, galleryControllerConfiguration: GalleryConfiguration, galleryCellConfiguration: GalleryCellConfiguration, settingsConfiguration: SettingsConfiguration) {
+		self.mainThemeColor = mainThemeColor
+		self.secondaryThemeColor = secondaryThemeColor
 		self.onboardingConfiguration = onboardingConfiguration
 		self.galleryControllerConfiguration = galleryControllerConfiguration
 		self.galleryCellConfiguration = galleryCellConfiguration

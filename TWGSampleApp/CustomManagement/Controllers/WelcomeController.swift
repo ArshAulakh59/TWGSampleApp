@@ -66,7 +66,7 @@ extension WelcomeController {
 		getStartedButton.backgroundColor = configuration.onboardingConfiguration.buttonBackgroundColor
 		
 		//Set Page Control Color
-		pageControl.pageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor.colorWithAlphaComponent(0.75)
+		pageControl.pageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor.colorWithAlphaComponent(0.5)
 		pageControl.currentPageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor
 	}
 }
