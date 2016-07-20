@@ -35,7 +35,7 @@ extension PicturesController {
 		
 		//Handle Configurations
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
 	}
 	
 	//MARK: Apply Configurations

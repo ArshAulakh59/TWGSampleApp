@@ -565,7 +565,7 @@
         <scene sceneID="93h-Et-ciu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1H0-4r-bsN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gallery" image="galleryIcon" id="Uxb-ri-wt9"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Gallery" image="galleryIcon" id="Uxb-ri-wt9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RFM-KE-Boo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -585,7 +585,7 @@
         <scene sceneID="VuM-lZ-Ins">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bHb-Az-HmW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" id="TY7-to-nps"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Settings" image="settingsIcon" id="TY7-to-nps"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oM8-eg-Yhv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

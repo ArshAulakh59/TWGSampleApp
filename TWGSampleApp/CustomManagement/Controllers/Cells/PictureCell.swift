@@ -31,7 +31,7 @@ class PictureCell: UITableViewCell {
 	//MARK: Initialization
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
 	}
 	
 	//MARK: Deinitilization

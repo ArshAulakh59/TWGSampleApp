@@ -13,12 +13,12 @@ import UIKit
 typealias PictureData = (picture: UIImage, caption: String)
 
 //Constant
-let configurationUpdatedKey = "ConfigurationUpdated"
+let ConfigurationUpdatedKey = "ConfigurationUpdated"
 
 //Variable
 var configuration: Configuration = Configuration() {
 	didSet {
-		NSNotificationCenter.defaultCenter().postNotificationName(configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().postNotificationName(ConfigurationUpdatedKey, object: nil)
 	}
 }
 

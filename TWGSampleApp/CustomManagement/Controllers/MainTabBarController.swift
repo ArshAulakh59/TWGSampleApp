@@ -21,27 +21,42 @@ extension MainTabController {
 	//MARK: System
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		//Configure Tab Bar
-		tabBar.translucent = false
+		applyInitialConfigurations()
 		
 		//Handle Configurations
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
 	}
 
+	//MARK: Initial Configurations 
+	func applyInitialConfigurations() {
+		//Configure Tab Bar
+		//Set Translucency
+		tabBar.translucent = false
+		
+		//Set Title Attributes
+		setTabBarItemsColor(Color.Gray.values.color, forState: .Normal)
+	}
+	
 	//MARK: Apply Configurations
 	func applyConfigurations() {
 		//Set Tab Bar Colors
 		tabBar.barTintColor = configuration.themeColorOne
 		tabBar.tintColor = configuration.themeColorTwo
 		
-		//Get Updated Attributes
-		let tabBarButtonItemsTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: Color.Gray.values.color]
-		let tabBarButtonItemsSelectedTitleTextAttributes = [NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: configuration.themeColorTwo]
-		
-		//Set Updated Attributes
-		UITabBarItem.appearanceWhenContainedInInstancesOfClasses([UITabBar.self]).setTitleTextAttributes(tabBarButtonItemsTitleTextAttributes, forState: .Normal)
-		UITabBarItem.appearanceWhenContainedInInstancesOfClasses([UITabBar.self]).setTitleTextAttributes(tabBarButtonItemsSelectedTitleTextAttributes, forState: .Selected)
+		//Set Updated Title Attributes
+		setTabBarItemsColor(configuration.themeColorTwo, forState: .Selected)
+	}
+}
+
+extension MainTabController {
+	//MARK: Additionals
+	//Set Title Color for TabBar Items
+	func setTabBarItemsColor(color: UIColor, forState state: UIControlState) {
+		if let items = tabBar.items {
+			for item in items as [UITabBarItem] {
+				item.setTitleTextAttributes([NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: color], forState: state)
+			}
+		}
 	}
 }
