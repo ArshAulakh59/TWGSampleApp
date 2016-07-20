@@ -9,7 +9,13 @@
 import XCTest
 
 //MARK:- Interface
-class TWGSampleAppUITests: XCTestCase { }
+class TWGSampleAppUITests: XCTestCase {
+	override func setUp() {
+		super.setUp()
+		continueAfterFailure = false
+		XCUIApplication().launch()
+	}
+}
 
 //MARK:- Implementation
 extension TWGSampleAppUITests {
