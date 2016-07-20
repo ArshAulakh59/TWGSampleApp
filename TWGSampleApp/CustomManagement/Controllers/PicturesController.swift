@@ -13,7 +13,7 @@ import Foundation
 class PicturesController: UITableViewController {
 	//MARK: Properties
 	//Variables
-	var picturesDatasource: [PictureData] = Array(count: 10000, repeatedValue: (UIImage(named: "sampleImage")!, "Sunset lighting up El Capitan."))
+	var picturesDatasource: [PictureData] = Array(count: 20, repeatedValue: (UIImage(named: "sampleImage")!, "Sunset lighting up El Capitan."))
 	
 	//Constants
 	let reuseIdentifier = "PictureCell"
@@ -31,10 +31,11 @@ extension PicturesController {
 		//Configure Table
 		tableView.estimatedRowHeight = 100.0
 		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
 		//Handle Configurations
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
 	}
 	
 	//MARK: Apply Configurations
@@ -57,6 +58,7 @@ extension PicturesController {
 		if !cell.isPopulated {
 			cell.data = picturesDatasource[indexPath.row]
 		}
+		
 		return cell
 	}
 }

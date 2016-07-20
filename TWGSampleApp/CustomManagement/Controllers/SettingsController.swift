@@ -51,7 +51,7 @@ extension SettingsController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
 	}
 	
 	override func viewWillAppear(animated: Bool) {

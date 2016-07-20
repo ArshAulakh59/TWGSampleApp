@@ -8,26 +8,65 @@
 
 import XCTest
 
-class TWGSampleAppUITests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+//MARK:- Interface
+class TWGSampleAppUITests: XCTestCase { }
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//MARK:- Implementation
+extension TWGSampleAppUITests {
+	//MARK: Tests
+	//Test Theme Change
+	func testThemeChange() {
+		//Get Application
+		let app = XCUIApplication()
 		
-    }
+		//Get Tab bar and go to settings
+		let tabBar = app.tabBars
+		let settingsButton = tabBar.buttons["Settings"]
+		settingsButton.tap()
+		
+		//Fetch Table
+		let settingsTable = app.tables
+		
+		//Fetch Cell
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Color One:").element
+		
+		//Get Segment Control
+		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
+		
+		//Change Theme Second Color
+		let redButton = themeColorTwoSegmentControl.buttons["Red"]
+		redButton.tap()
+		let blueButton = themeColorTwoSegmentControl.buttons["Blue"]
+		blueButton.tap()
+		let grayButton = themeColorTwoSegmentControl.buttons["Gray"]
+		grayButton.tap()
+		let greenButton = themeColorTwoSegmentControl.buttons["Green"]
+		greenButton.tap()
+		let yellowButton = themeColorTwoSegmentControl.buttons["Yellow"]
+		yellowButton.tap()
+	}
+	
+	//Test Resetting Theme
+	func testResettingThemeToDefault() {
+		//Get Application
+		let app = XCUIApplication()
+		
+		//Get Tab bar and go to settings
+		let tabBar = app.tabBars
+		let settingsButton = tabBar.buttons["Settings"]
+		settingsButton.tap()
+		
+		//Fetch Table
+		let settingsTable = app.tables
+		
+		//Change to custom theme before resetting
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Theme Color One:").element
+		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
+		let redButton = themeColorTwoSegmentControl.buttons["Red"]
+		redButton.tap()
+		
+		//Reset To Default Theme
+		let defaultThemeButton = settingsTable.buttons["Use Default Theme"]
+		defaultThemeButton.tap()
+	}
 }

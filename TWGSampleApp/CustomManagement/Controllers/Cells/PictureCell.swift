@@ -31,7 +31,7 @@ class PictureCell: UITableViewCell {
 	//MARK: Initialization
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: configurationUpdatedKey, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
 	}
 	
 	//MARK: Deinitilization
@@ -48,9 +48,6 @@ extension PictureCell {
 	}
 	
 	func applyConfigurations() {
-		if configuration.galleryCellConfiguration.allowParallax {
-			addParallaxToImageView(pictureImageView)
-		}
 		captionLabel.textColor = configuration.galleryCellConfiguration.captionLabelColor
 	}
 }
@@ -68,18 +65,5 @@ extension PictureCell {
 			self.pictureImageView.image = data.picture
 			self.backgroundImageView.image = data.picture
 		}
-	}
-}
-
-extension PictureCell {
-	//MARK: Handle parallax
-	func addParallaxToImageView(imageView: UIImageView) {
-		// Set horizontal effect
-		let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-		horizontalMotionEffect.minimumRelativeValue = -12
-		horizontalMotionEffect.maximumRelativeValue = 12
-		
-		// Add both effects to your view
-		imageView.addMotionEffect(horizontalMotionEffect)
 	}
 }

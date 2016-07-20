@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Kh-Ywa">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Kh-Ywa" userLabel="Onboarding Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uh9-Zp-Apj" userLabel="Content View">
@@ -352,7 +352,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="127" sectionHeaderHeight="18" sectionFooterHeight="18" id="fTo-e1-e9M">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Use Default Theme" id="7lA-ns-Kcu">
@@ -565,7 +565,7 @@
         <scene sceneID="93h-Et-ciu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1H0-4r-bsN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gallery" id="Uxb-ri-wt9"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Gallery" image="galleryIcon" id="Uxb-ri-wt9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RFM-KE-Boo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -585,7 +585,7 @@
         <scene sceneID="VuM-lZ-Ins">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bHb-Az-HmW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="TY7-to-nps"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Settings" image="settingsIcon" id="TY7-to-nps"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oM8-eg-Yhv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -602,5 +602,9 @@
             <point key="canvasLocation" x="-616" y="1618"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="galleryIcon" width="24" height="24"/>
+        <image name="settingsIcon" width="24" height="24"/>
+    </resources>
     <color key="tintColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
