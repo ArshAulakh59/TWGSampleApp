@@ -22,7 +22,7 @@ struct Configuration {
 	init(mainThemeColor: UIColor = Color.Green.values.color, secondaryThemeColor: UIColor = Color.White.values.color) {
 		self.mainThemeColor = mainThemeColor
 		self.secondaryThemeColor = secondaryThemeColor
-		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: secondaryThemeColor, labelsColor: mainThemeColor, buttonTextColor: secondaryThemeColor, buttonBackgroundColor: mainThemeColor, pageControlTintColor: mainThemeColor)
+		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: secondaryThemeColor, labelsColor: mainThemeColor, buttonTextColor: mainThemeColor, buttonBackgroundColor: secondaryThemeColor, pageControlTintColor: mainThemeColor)
 		self.galleryControllerConfiguration = GalleryConfiguration(backgroundColor: secondaryThemeColor, navigationBarTintColor: secondaryThemeColor, navigationBarTextColor: mainThemeColor)
 		self.galleryCellConfiguration = GalleryCellConfiguration(captionLabelColor: mainThemeColor)
 		self.settingsConfiguration = SettingsConfiguration(backgroundColor: secondaryThemeColor, navigationBarTintColor: secondaryThemeColor, navigationBarTextColor: mainThemeColor, themeOneLabelColor: mainThemeColor, themeOneSegmentTintColor: mainThemeColor, themeTwoLabelColor: mainThemeColor, themeTwoSegmentTintColor: mainThemeColor)

@@ -62,7 +62,7 @@ extension PicturesController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PictureCell
 		if !cell.isPopulated {
-			cell.data = picturesDatasource[indexPath.row]
+			cell.data = self.picturesDatasource[indexPath.row]
 		}
 		
 		return cell

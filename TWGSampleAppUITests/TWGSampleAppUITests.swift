@@ -41,18 +41,18 @@ extension TWGSampleAppUITests {
 		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Primary Color:").element
 		
 		//Get Segment Control
-		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
+		let themeColorOneSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(0)
 		
-		//Change Theme Second Color
-		let redButton = themeColorTwoSegmentControl.buttons["Red"]
+		//Change Theme Main Color
+		let redButton = themeColorOneSegmentControl.buttons["Red"]
 		redButton.tap()
-		let blueButton = themeColorTwoSegmentControl.buttons["Blue"]
+		let blueButton = themeColorOneSegmentControl.buttons["Blue"]
 		blueButton.tap()
-		let grayButton = themeColorTwoSegmentControl.buttons["Gray"]
+		let grayButton = themeColorOneSegmentControl.buttons["Gray"]
 		grayButton.tap()
-		let greenButton = themeColorTwoSegmentControl.buttons["Green"]
+		let greenButton = themeColorOneSegmentControl.buttons["Green"]
 		greenButton.tap()
-		let yellowButton = themeColorTwoSegmentControl.buttons["Yellow"]
+		let yellowButton = themeColorOneSegmentControl.buttons["Yellow"]
 		yellowButton.tap()
 	}
 	
@@ -70,9 +70,9 @@ extension TWGSampleAppUITests {
 		let settingsTable = app.tables
 		
 		//Change to custom theme before resetting
-		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Secondary Color:").element
-		let themeColorTwoSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(1)
-		let redButton = themeColorTwoSegmentControl.buttons["Red"]
+		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Primary Color:").element
+		let themeColorOneSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(0)
+		let redButton = themeColorOneSegmentControl.buttons["Red"]
 		redButton.tap()
 		
 		//Reset To Default Theme

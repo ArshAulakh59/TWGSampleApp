@@ -44,6 +44,7 @@ extension WelcomeController {
 	
 	//MARK: Initial Configuration
 	func applyInitialConfigurations() {
+		getStartedButton.layer.cornerRadius = 5
 		getStartedButton.setTitle(isDismissable ? "Dismiss" : "Get Started", forState: .Normal)
 		getStartedButton.addTarget(self, action: (isDismissable ? #selector(dismissOnboardingController) : #selector(proceedToGallery)), forControlEvents: .TouchUpInside)
 	}
@@ -64,6 +65,8 @@ extension WelcomeController {
 		//Set Button Colors
 		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor, forState: .Normal)
 		getStartedButton.backgroundColor = configuration.onboardingConfiguration.buttonBackgroundColor
+		getStartedButton.layer.borderWidth = 1
+		getStartedButton.layer.borderColor = configuration.onboardingConfiguration.buttonTextColor.CGColor
 		
 		//Set Page Control Color
 		pageControl.pageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor.colorWithAlphaComponent(0.5)
