@@ -35,7 +35,8 @@ extension MainTabController {
 		tabBar.translucent = false
 		
 		//Set Title Attributes
-		setTabBarItemsColor(Color.Gray.values.color, forState: .Normal)
+		//Color.Gray.values.color
+		setTabBarItemsColor(UIColor.darkGrayColor(), forState: .Normal)
 	}
 	
 	//MARK: Apply Configurations

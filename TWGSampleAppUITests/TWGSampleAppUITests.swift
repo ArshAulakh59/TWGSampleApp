@@ -15,6 +15,10 @@ class TWGSampleAppUITests: XCTestCase {
 		continueAfterFailure = false
 		XCUIApplication().launch()
 	}
+	
+	override func tearDown() {
+		super.tearDown()
+	}
 }
 
 //MARK:- Implementation

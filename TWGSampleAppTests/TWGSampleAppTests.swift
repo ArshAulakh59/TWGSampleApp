@@ -23,4 +23,8 @@ extension TWGSampleAppTests {
 	func testGalleryNotEmpty() {
 		XCTAssertGreaterThan(picturesControllerObject.picturesDatasource.count, 0)
 	}
+	
+	func testExample() {
+		XCTAssertEqual(1+1, 2)
+	}
 }

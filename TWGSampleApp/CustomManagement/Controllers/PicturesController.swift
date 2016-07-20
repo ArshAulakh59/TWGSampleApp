@@ -13,7 +13,13 @@ import Foundation
 class PicturesController: UITableViewController {
 	//MARK: Properties
 	//Variables
-	var picturesDatasource: [PictureData] = Array(count: 5, repeatedValue: (UIImage(named: "sampleImage")!, "Sunset lighting up El Capitan."))
+	var picturesDatasource: [PictureData] = [
+		(UIImage(named: "sampleImage1")!, "Sunset lighting up El Capitan."),
+		(UIImage(named: "sampleImage2")!, "Mountains are they way to go."),
+		(UIImage(named: "sampleImage3")!, "What better image can go here than this 😉."),
+		(UIImage(named: "sampleImage4")!, "Just another mountain image."),
+		(UIImage(named: "sampleImage5")!, "Yet another mountain image.")
+	]
 	
 	//Constants
 	let reuseIdentifier = "PictureCell"

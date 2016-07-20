@@ -267,20 +267,20 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2e-O1-5X2">
-                                                                <rect key="frame" x="4" y="4" width="576" height="26"/>
+                                                                <rect key="frame" x="8" y="8" width="568" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                                 <color key="textColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="u2e-O1-5X2" secondAttribute="bottom" constant="4" id="3dx-na-bB8"/>
-                                                            <constraint firstItem="u2e-O1-5X2" firstAttribute="top" secondItem="7JH-nH-IzB" secondAttribute="top" constant="4" id="NRb-hf-17f"/>
-                                                            <constraint firstAttribute="trailing" secondItem="u2e-O1-5X2" secondAttribute="trailing" constant="4" id="aDa-cU-Hj3"/>
-                                                            <constraint firstItem="u2e-O1-5X2" firstAttribute="leading" secondItem="7JH-nH-IzB" secondAttribute="leading" constant="4" id="yke-fH-n4F"/>
+                                                            <constraint firstAttribute="bottom" secondItem="u2e-O1-5X2" secondAttribute="bottom" constant="8" id="3dx-na-bB8"/>
+                                                            <constraint firstItem="u2e-O1-5X2" firstAttribute="top" secondItem="7JH-nH-IzB" secondAttribute="top" constant="8" id="NRb-hf-17f"/>
+                                                            <constraint firstAttribute="trailing" secondItem="u2e-O1-5X2" secondAttribute="trailing" constant="8" id="aDa-cU-Hj3"/>
+                                                            <constraint firstItem="u2e-O1-5X2" firstAttribute="leading" secondItem="7JH-nH-IzB" secondAttribute="leading" constant="8" id="yke-fH-n4F"/>
                                                         </constraints>
                                                     </view>
-                                                    <blurEffect style="extraLight"/>
+                                                    <blurEffect style="light"/>
                                                 </visualEffectView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -349,63 +349,16 @@
         <scene sceneID="Mab-W7-q2g">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5I9-Lh-CMc" customClass="SettingsController" customModule="TWGSampleApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="127" sectionHeaderHeight="18" sectionFooterHeight="18" id="fTo-e1-e9M">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="fTo-e1-e9M">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Use Default Theme" id="7lA-ns-Kcu">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="50" id="Jpl-wk-u3l">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jpl-wk-u3l" id="Fs1-8b-TkJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yT-zC-tHe">
-                                                    <rect key="frame" x="0.0" y="3" width="600" height="44"/>
-                                                    <color key="backgroundColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="1yT-zC-tHe" secondAttribute="height" multiplier="3:1" id="2g0-8N-vfT"/>
-                                                        <constraint firstAttribute="height" constant="44" id="dqh-2D-AnC"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                    <state key="normal" title="Use Default Theme">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="2g0-8N-vfT"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <action selector="resetToDefaultThemeClicked:" destination="5I9-Lh-CMc" eventType="touchUpInside" id="61G-oX-fPT"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="1yT-zC-tHe" firstAttribute="leading" secondItem="Fs1-8b-TkJ" secondAttribute="leading" id="0bZ-PC-Jwh"/>
-                                                <constraint firstItem="1yT-zC-tHe" firstAttribute="centerX" secondItem="Fs1-8b-TkJ" secondAttribute="centerX" id="Hel-ai-hB5"/>
-                                                <constraint firstAttribute="trailing" secondItem="1yT-zC-tHe" secondAttribute="trailing" id="IjN-CB-6Gy"/>
-                                                <constraint firstItem="1yT-zC-tHe" firstAttribute="centerY" secondItem="Fs1-8b-TkJ" secondAttribute="centerY" id="gTg-au-XzD"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Hel-ai-hB5"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Use Custom Theme" id="clP-AZ-Xga">
+                            <tableViewSection id="clP-AZ-Xga">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="179" id="Nnw-jr-7bT">
-                                        <rect key="frame" x="0.0" y="213.5" width="600" height="179"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nnw-jr-7bT" id="B9A-h0-HEA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
@@ -476,26 +429,83 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Check Onbaording" id="tkp-mB-Vhp">
+                            <tableViewSection id="7lA-ns-Kcu">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="80" id="Jpl-wk-u3l">
+                                        <rect key="frame" x="0.0" y="243" width="600" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jpl-wk-u3l" id="Fs1-8b-TkJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yT-zC-tHe">
+                                                    <rect key="frame" x="8" y="18" width="584" height="44"/>
+                                                    <color key="backgroundColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="1yT-zC-tHe" secondAttribute="height" multiplier="3:1" id="2g0-8N-vfT"/>
+                                                        <constraint firstAttribute="height" constant="44" id="dqh-2D-AnC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                    <state key="normal" title="Reset Theme">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="2g0-8N-vfT"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="resetToDefaultThemeClicked:" destination="5I9-Lh-CMc" eventType="touchUpInside" id="61G-oX-fPT"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="1yT-zC-tHe" firstAttribute="leading" secondItem="Fs1-8b-TkJ" secondAttribute="leading" constant="8" id="0bZ-PC-Jwh"/>
+                                                <constraint firstItem="1yT-zC-tHe" firstAttribute="centerX" secondItem="Fs1-8b-TkJ" secondAttribute="centerX" id="Hel-ai-hB5"/>
+                                                <constraint firstAttribute="trailing" secondItem="1yT-zC-tHe" secondAttribute="trailing" constant="8" id="IjN-CB-6Gy"/>
+                                                <constraint firstItem="1yT-zC-tHe" firstAttribute="centerY" secondItem="Fs1-8b-TkJ" secondAttribute="centerY" id="gTg-au-XzD"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Hel-ai-hB5"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="tkp-mB-Vhp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="50" id="YxK-Yx-UlW">
-                                        <rect key="frame" x="0.0" y="442.5" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="323" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YxK-Yx-UlW" id="kll-Xc-Cfd">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq7-OE-SnP">
-                                                    <rect key="frame" x="0.0" y="3" width="600" height="44"/>
+                                                    <rect key="frame" x="8" y="3" width="584" height="44"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="iq7-OE-SnP" secondAttribute="height" multiplier="3:1" id="FTc-Yf-8PZ"/>
                                                         <constraint firstAttribute="height" constant="44" id="Gib-4t-mqM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                    <state key="normal" title="Check Onbarding">
+                                                    <state key="normal" title="Preview Onboarding">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="FTc-Yf-8PZ"/>
@@ -508,8 +518,8 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="iq7-OE-SnP" firstAttribute="leading" secondItem="kll-Xc-Cfd" secondAttribute="leading" id="RSx-ST-TfP"/>
-                                                <constraint firstAttribute="trailing" secondItem="iq7-OE-SnP" secondAttribute="trailing" id="iex-zN-eCr"/>
+                                                <constraint firstItem="iq7-OE-SnP" firstAttribute="leading" secondItem="kll-Xc-Cfd" secondAttribute="leading" constant="8" id="RSx-ST-TfP"/>
+                                                <constraint firstAttribute="trailing" secondItem="iq7-OE-SnP" secondAttribute="trailing" constant="8" id="iex-zN-eCr"/>
                                                 <constraint firstItem="iq7-OE-SnP" firstAttribute="centerX" secondItem="kll-Xc-Cfd" secondAttribute="centerX" id="jYO-1I-icf"/>
                                                 <constraint firstItem="iq7-OE-SnP" firstAttribute="centerY" secondItem="kll-Xc-Cfd" secondAttribute="centerY" id="x7m-rI-ClC"/>
                                             </constraints>
@@ -529,7 +539,7 @@
                             <outlet property="delegate" destination="5I9-Lh-CMc" id="xFi-o7-xpv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="SETTINGS" id="szf-BN-NX3"/>
+                    <navigationItem key="navigationItem" title="CUSTOMIZE THEME" id="szf-BN-NX3"/>
                     <connections>
                         <outlet property="checkOnboardingButton" destination="iq7-OE-SnP" id="9Ow-fC-qEo"/>
                         <outlet property="defaultThemeButton" destination="1yT-zC-tHe" id="R1u-DW-qv0"/>
@@ -581,11 +591,11 @@
             </objects>
             <point key="canvasLocation" x="-616" y="899"/>
         </scene>
-        <!--Settings-->
+        <!--Customize-->
         <scene sceneID="VuM-lZ-Ins">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bHb-Az-HmW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Settings" image="settingsIcon" id="TY7-to-nps"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Customize" image="settingsIcon" id="TY7-to-nps"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oM8-eg-Yhv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
