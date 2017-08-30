@@ -29,7 +29,7 @@ extension MainTabController {
 	}
 
 	//MARK: Initial Configurations 
-	func applyInitialConfigurations() {
+	@objc func applyInitialConfigurations() {
 		//Configure Tab Bar
 		//Set Translucency
 		tabBar.isTranslucent = false
@@ -37,7 +37,7 @@ extension MainTabController {
 	}
 	
 	//MARK: Apply Configurations
-	func applyConfigurations() {
+	@objc func applyConfigurations() {
 		//Set Tab Bar Colors
 		tabBar.barTintColor = configuration.secondaryThemeColor
 		tabBar.tintColor = configuration.mainThemeColor
@@ -58,10 +58,10 @@ extension MainTabController {
 extension MainTabController {
 	//MARK: Additionals
 	//Set Title Color for TabBar Items
-	func setTabBarItemsColor(color: UIColor, forState state: UIControlState) {
+	@objc func setTabBarItemsColor(color: UIColor, forState state: UIControlState) {
 		if let items = tabBar.items {
 			for item in items as [UITabBarItem] {
-				item.setTitleTextAttributes([NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: color], for: state)
+				item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.thinFontOfSize(11), NSAttributedStringKey.foregroundColor: color], for: state)
 			}
 		}
 	}

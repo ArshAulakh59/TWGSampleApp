@@ -20,7 +20,7 @@ class SettingsController: UITableViewController {
 	@IBOutlet weak var checkOnboardingButton: UIButton!
 	
 	//Constants
-	let showCurrentSelectionForSegmentControl = { (color: UIColor, sender: UISegmentedControl) in
+	@objc let showCurrentSelectionForSegmentControl = { (color: UIColor, sender: UISegmentedControl) in
 		switch color {
 		case Color.red.values.color:
 			sender.selectedSegmentIndex = Color.red.values.index
@@ -61,11 +61,11 @@ extension SettingsController {
 	}
 	
 	//MARK: Apply Configurations
-	func applyConfigurations() {
+	@objc func applyConfigurations() {
 		tableView.backgroundColor = configuration.settingsConfiguration.backgroundColor
 		navigationController?.navigationBar.barTintColor = configuration.settingsConfiguration.navigationBarTintColor
 		navigationController?.navigationBar.tintColor = configuration.settingsConfiguration.navigationBarTextColor
-		navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15), NSForegroundColorAttributeName: configuration.settingsConfiguration.navigationBarTextColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedStringKey.foregroundColor: configuration.settingsConfiguration.navigationBarTextColor]
 		
 		//Set Labels Color
 		themeColorOneLabel.textColor = configuration.settingsConfiguration.themeOneLabelColor
@@ -123,12 +123,12 @@ extension SettingsController {
 
 extension SettingsController {
 	//MARK: Additionals
-	func showCurrentSelections() {
+	@objc func showCurrentSelections() {
 		showCurrentSelectionForSegmentControl(configuration.mainThemeColor, themeColorOneSegmentColor)
 		showCurrentSelectionForSegmentControl(configuration.secondaryThemeColor, themeColorTwoSegmentControl)
 	}
 	
-	func updateAvailableOptionsByCurrentConfiguration() {
+	@objc func updateAvailableOptionsByCurrentConfiguration() {
 		//Show Selections If user leaves the segment unselected
 		if !themeColorOneSegmentColor.isSelected {
 			showCurrentSelectionForSegmentControl(configuration.mainThemeColor, themeColorOneSegmentColor)

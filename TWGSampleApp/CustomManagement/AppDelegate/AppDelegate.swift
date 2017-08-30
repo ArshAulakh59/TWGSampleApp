@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//MARK: Properties
 	//Variables
 	var window: UIWindow?
-	var isFirstLaunch: Bool {
+	@objc var isFirstLaunch: Bool {
 		let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 		if !launchedBefore {
 			UserDefaults.standard.set(true, forKey: "launchedBefore")

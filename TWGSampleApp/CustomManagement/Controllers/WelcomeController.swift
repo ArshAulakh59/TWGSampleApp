@@ -24,7 +24,7 @@ class WelcomeController: UIViewController {
 	@IBOutlet weak var pageControl: UIPageControl!
 	
 	//Variables
-	var isDismissable: Bool = false
+	@objc var isDismissable: Bool = false
 	
 	//MARK: Deinitilization
 	deinit {
@@ -43,14 +43,14 @@ extension WelcomeController {
 	}
 	
 	//MARK: Initial Configuration
-	func applyInitialConfigurations() {
+	@objc func applyInitialConfigurations() {
 		getStartedButton.layer.cornerRadius = 5
 		getStartedButton.setTitle(isDismissable ? "Dismiss" : "Get Started", for: UIControlState())
 		getStartedButton.addTarget(self, action: (isDismissable ? #selector(dismissOnboardingController) : #selector(proceedToGallery)), for: .touchUpInside)
 	}
 	
 	//MARK: Apply Configurations
-	func applyConfigurations() {
+	@objc func applyConfigurations() {
 		//Set Background Color
 		welcomeView.backgroundColor = configuration.onboardingConfiguration.backgroundColor
 		functionalityView.backgroundColor = configuration.onboardingConfiguration.backgroundColor
@@ -84,11 +84,11 @@ extension WelcomeController: UIScrollViewDelegate {
 
 extension WelcomeController {
 	//MARK: Handle Button Actions
-	func dismissOnboardingController() {
+	@objc func dismissOnboardingController() {
 		dismiss(animated: true, completion: nil)
 	}
 	
-	func proceedToGallery() {
+	@objc func proceedToGallery() {
 		if let tabController = storyboard?.instantiateViewController(withIdentifier: "MainTabController") as? MainTabController {
 			present(tabController, animated: true, completion: nil)
 		}

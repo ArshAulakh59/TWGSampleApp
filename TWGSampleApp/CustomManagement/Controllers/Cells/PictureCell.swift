@@ -24,7 +24,7 @@ class PictureCell: UITableViewCell {
 			populateCellFromData(data)
 		}
 	}
-	var isPopulated: Bool {
+	@objc var isPopulated: Bool {
 		return captionLabel.text == nil && pictureImageView.image == nil && backgroundImageView.image == nil
 	}
 	
@@ -47,7 +47,7 @@ extension PictureCell {
 		applyConfigurations()
 	}
 	
-	func applyConfigurations() {
+	@objc func applyConfigurations() {
 		captionLabel.textColor = configuration.galleryCellConfiguration.captionLabelColor
 	}
 }

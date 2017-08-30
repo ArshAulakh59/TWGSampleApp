@@ -22,7 +22,7 @@ class PicturesController: UITableViewController {
 	]
 	
 	//Constants
-	let reuseIdentifier = "PictureCell"
+	@objc let reuseIdentifier = "PictureCell"
 	
 	//MARK: Deinitilization
 	deinit {
@@ -45,11 +45,11 @@ extension PicturesController {
 	}
 	
 	//MARK: Apply Configurations
-	func applyConfigurations() {
+	@objc func applyConfigurations() {
 		tableView.backgroundColor = configuration.galleryControllerConfiguration.backgroundColor
 		navigationController?.navigationBar.barTintColor = configuration.galleryControllerConfiguration.navigationBarTintColor
 		navigationController?.navigationBar.tintColor = configuration.galleryControllerConfiguration.navigationBarTextColor
-		navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15), NSForegroundColorAttributeName: configuration.galleryControllerConfiguration.navigationBarTextColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedStringKey.foregroundColor: configuration.galleryControllerConfiguration.navigationBarTextColor]
 	}
 }
 
