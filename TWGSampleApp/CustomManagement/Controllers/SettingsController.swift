@@ -22,18 +22,18 @@ class SettingsController: UITableViewController {
 	//Constants
 	let showCurrentSelectionForSegmentControl = { (color: UIColor, sender: UISegmentedControl) in
 		switch color {
-		case Color.Red.values.color:
-			sender.selectedSegmentIndex = Color.Red.values.index
-		case Color.Blue.values.color:
-			sender.selectedSegmentIndex = Color.Blue.values.index
-		case Color.Gray.values.color:
-			sender.selectedSegmentIndex = Color.Gray.values.index
-		case Color.Green.values.color:
-			sender.selectedSegmentIndex = Color.Green.values.index
-		case Color.White.values.color:
-			sender.selectedSegmentIndex = Color.White.values.index
-		case Color.Yellow.values.color:
-			sender.selectedSegmentIndex = Color.Yellow.values.index
+		case Color.red.values.color:
+			sender.selectedSegmentIndex = Color.red.values.index
+		case Color.blue.values.color:
+			sender.selectedSegmentIndex = Color.blue.values.index
+		case Color.gray.values.color:
+			sender.selectedSegmentIndex = Color.gray.values.index
+		case Color.green.values.color:
+			sender.selectedSegmentIndex = Color.green.values.index
+		case Color.white.values.color:
+			sender.selectedSegmentIndex = Color.white.values.index
+		case Color.yellow.values.color:
+			sender.selectedSegmentIndex = Color.yellow.values.index
 		default:
 			return
 		}
@@ -41,7 +41,7 @@ class SettingsController: UITableViewController {
 	
 	//MARK: Deinitilization
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 }
 
@@ -51,10 +51,10 @@ extension SettingsController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(applyConfigurations), name: NSNotification.Name(rawValue: ConfigurationUpdatedKey), object: nil)
 	}
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		showCurrentSelections()
 		updateAvailableOptionsByCurrentConfiguration()
@@ -65,7 +65,7 @@ extension SettingsController {
 		tableView.backgroundColor = configuration.settingsConfiguration.backgroundColor
 		navigationController?.navigationBar.barTintColor = configuration.settingsConfiguration.navigationBarTintColor
 		navigationController?.navigationBar.tintColor = configuration.settingsConfiguration.navigationBarTextColor
-		navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(15), NSForegroundColorAttributeName: configuration.settingsConfiguration.navigationBarTextColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15), NSForegroundColorAttributeName: configuration.settingsConfiguration.navigationBarTextColor]
 		
 		//Set Labels Color
 		themeColorOneLabel.textColor = configuration.settingsConfiguration.themeOneLabelColor
@@ -77,24 +77,24 @@ extension SettingsController {
 		
 		//Set Buttons Colors
 		defaultThemeButton.backgroundColor = configuration.secondaryThemeColor
-		defaultThemeButton.setTitleColor(configuration.mainThemeColor, forState: .Normal)
+		defaultThemeButton.setTitleColor(configuration.mainThemeColor, for: UIControlState())
 		checkOnboardingButton.backgroundColor = configuration.secondaryThemeColor
-		checkOnboardingButton.setTitleColor(configuration.mainThemeColor, forState: .Normal)
+		checkOnboardingButton.setTitleColor(configuration.mainThemeColor, for: UIControlState())
 	}
 }
 
 extension SettingsController {
 	//MARK: Handle Button Actions
 	//Handle Resetting to default theme
-	@IBAction func resetToDefaultThemeClicked(sender: UIButton) {
+	@IBAction func resetToDefaultThemeClicked(_ sender: UIButton) {
 		configuration = Configuration()
 		showCurrentSelections()
 		updateAvailableOptionsByCurrentConfiguration()
 	}
 	
 	//Handle Theme Override
-	@IBAction func colorSelected(sender: UISegmentedControl) {
-		guard let color = Color(rawValue: sender.selectedSegmentIndex) where sender.selectedSegmentIndex >= 0 && sender.selectedSegmentIndex <= 5 else {
+	@IBAction func colorSelected(_ sender: UISegmentedControl) {
+		guard let color = Color(rawValue: sender.selectedSegmentIndex), sender.selectedSegmentIndex >= 0 && sender.selectedSegmentIndex <= 5 else {
 			return
 		}
 		
@@ -113,10 +113,10 @@ extension SettingsController {
 	}
 	
 	//Check Onboarding Flow
-	@IBAction func checkOnboardingFlowClicked(sender: AnyObject) {
-		if let welcomeObject = storyboard?.instantiateViewControllerWithIdentifier("WelcomeController") as? WelcomeController {
+	@IBAction func checkOnboardingFlowClicked(_ sender: AnyObject) {
+		if let welcomeObject = storyboard?.instantiateViewController(withIdentifier: "WelcomeController") as? WelcomeController {
 			welcomeObject.isDismissable = true
-			presentViewController(welcomeObject, animated: true, completion: nil)
+			present(welcomeObject, animated: true, completion: nil)
 		}
 	}
 }
@@ -130,10 +130,10 @@ extension SettingsController {
 	
 	func updateAvailableOptionsByCurrentConfiguration() {
 		//Show Selections If user leaves the segment unselected
-		if !themeColorOneSegmentColor.selected {
+		if !themeColorOneSegmentColor.isSelected {
 			showCurrentSelectionForSegmentControl(configuration.mainThemeColor, themeColorOneSegmentColor)
 		}
-		if !themeColorTwoSegmentControl.selected {
+		if !themeColorTwoSegmentControl.isSelected {
 			showCurrentSelectionForSegmentControl(configuration.secondaryThemeColor, themeColorTwoSegmentControl)
 		}
 		
@@ -141,25 +141,25 @@ extension SettingsController {
 		let updateOptions = { (color: UIColor, sender: UISegmentedControl) in
 			//Enable All Options
 			for index in 0..<sender.numberOfSegments {
-				sender.setEnabled(true, forSegmentAtIndex: index)
+				sender.setEnabled(true, forSegmentAt: index)
 			}
 			
 			//Disable Unavailable Option
 			switch color {
-			case Color.Red.values.color:
-				sender.setEnabled(false, forSegmentAtIndex: Color.Red.values.index)
-			case Color.Blue.values.color:
-				sender.setEnabled(false, forSegmentAtIndex: Color.Blue.values.index)
-			case Color.Gray.values.color:
-				sender.setEnabled(false, forSegmentAtIndex: Color.Gray.values.index)
-			case Color.Green.values.color:
-				sender.setEnabled(false, forSegmentAtIndex: Color.Green.values.index)
-			case Color.White.values.color:
-				sender.setEnabled(false, forSegmentAtIndex: Color.White.values.index)
-			case Color.Yellow.values.color:
-				sender.setEnabled(false, forSegmentAtIndex: Color.Yellow.values.index)
+			case Color.red.values.color:
+				sender.setEnabled(false, forSegmentAt: Color.red.values.index)
+			case Color.blue.values.color:
+				sender.setEnabled(false, forSegmentAt: Color.blue.values.index)
+			case Color.gray.values.color:
+				sender.setEnabled(false, forSegmentAt: Color.gray.values.index)
+			case Color.green.values.color:
+				sender.setEnabled(false, forSegmentAt: Color.green.values.index)
+			case Color.white.values.color:
+				sender.setEnabled(false, forSegmentAt: Color.white.values.index)
+			case Color.yellow.values.color:
+				sender.setEnabled(false, forSegmentAt: Color.yellow.values.index)
 			default:
-				sender.setEnabled(false, forSegmentAtIndex: Color.Yellow.values.index)
+				sender.setEnabled(false, forSegmentAt: Color.yellow.values.index)
 				return
 			}
 		}

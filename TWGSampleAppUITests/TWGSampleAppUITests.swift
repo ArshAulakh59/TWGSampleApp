@@ -38,10 +38,10 @@ extension TWGSampleAppUITests {
 		let settingsTable = app.tables
 		
 		//Fetch Cell
-		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Primary Color:").element
+		let customThemeCell = settingsTable.cells.containing(.staticText, identifier: "Primary Color:").element
 		
 		//Get Segment Control
-		let themeColorOneSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(0)
+		let themeColorOneSegmentControl = customThemeCell.children(matching: .segmentedControl).element(boundBy: 0)
 		
 		//Change Theme Main Color
 		let redButton = themeColorOneSegmentControl.buttons["Red"]
@@ -70,8 +70,8 @@ extension TWGSampleAppUITests {
 		let settingsTable = app.tables
 		
 		//Change to custom theme before resetting
-		let customThemeCell = settingsTable.cells.containingType(.StaticText, identifier: "Primary Color:").element
-		let themeColorOneSegmentControl = customThemeCell.childrenMatchingType(.SegmentedControl).elementBoundByIndex(0)
+		let customThemeCell = settingsTable.cells.containing(.staticText, identifier: "Primary Color:").element
+		let themeColorOneSegmentControl = customThemeCell.children(matching: .segmentedControl).element(boundBy: 0)
 		let redButton = themeColorOneSegmentControl.buttons["Red"]
 		redButton.tap()
 		

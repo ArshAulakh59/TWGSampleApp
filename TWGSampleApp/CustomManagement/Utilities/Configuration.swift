@@ -19,7 +19,7 @@ struct Configuration {
 	var settingsConfiguration: SettingsConfiguration
 	
 	//MARK: Initialisation
-	init(mainThemeColor: UIColor = Color.Green.values.color, secondaryThemeColor: UIColor = Color.White.values.color) {
+	init(mainThemeColor: UIColor = Color.green.values.color, secondaryThemeColor: UIColor = Color.white.values.color) {
 		self.mainThemeColor = mainThemeColor
 		self.secondaryThemeColor = secondaryThemeColor
 		self.onboardingConfiguration = OnboardingConfiguration(backgroundColor: secondaryThemeColor, labelsColor: mainThemeColor, buttonTextColor: mainThemeColor, buttonBackgroundColor: secondaryThemeColor, pageControlTintColor: mainThemeColor)

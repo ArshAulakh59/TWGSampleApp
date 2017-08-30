@@ -26,7 +26,7 @@ class PicturesController: UITableViewController {
 	
 	//MARK: Deinitilization
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 }
 
@@ -37,11 +37,11 @@ extension PicturesController {
 		//Configure Table
 		tableView.estimatedRowHeight = 100.0
 		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
 		//Handle Configurations
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(applyConfigurations), name: NSNotification.Name(rawValue: ConfigurationUpdatedKey), object: nil)
 	}
 	
 	//MARK: Apply Configurations
@@ -49,18 +49,18 @@ extension PicturesController {
 		tableView.backgroundColor = configuration.galleryControllerConfiguration.backgroundColor
 		navigationController?.navigationBar.barTintColor = configuration.galleryControllerConfiguration.navigationBarTintColor
 		navigationController?.navigationBar.tintColor = configuration.galleryControllerConfiguration.navigationBarTextColor
-		navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(15), NSForegroundColorAttributeName: configuration.galleryControllerConfiguration.navigationBarTextColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15), NSForegroundColorAttributeName: configuration.galleryControllerConfiguration.navigationBarTextColor]
 	}
 }
 
 extension PicturesController {
 	//MARK: Configure Table
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return picturesDatasource.count
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PictureCell
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! PictureCell
 		if !cell.isPopulated {
 			cell.data = self.picturesDatasource[indexPath.row]
 		}

@@ -12,7 +12,7 @@ import UIKit
 class MainTabController: UITabBarController {
 	//MARK: Deinitilization
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 }
 
@@ -25,14 +25,14 @@ extension MainTabController {
 		
 		//Handle Configurations
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(applyConfigurations), name: NSNotification.Name(rawValue: ConfigurationUpdatedKey), object: nil)
 	}
 
 	//MARK: Initial Configurations 
 	func applyInitialConfigurations() {
 		//Configure Tab Bar
 		//Set Translucency
-		tabBar.translucent = false
+		tabBar.isTranslucent = false
 		applyConfigurations()
 	}
 	
@@ -43,14 +43,14 @@ extension MainTabController {
 		tabBar.tintColor = configuration.mainThemeColor
 		
 		//Set Updated Title Attributes
-		setTabBarItemsColor(configuration.secondaryThemeColor != Color.Gray.values.color ? Color.Gray.values.color : UIColor.darkTextColor().colorWithAlphaComponent(0.25), forState: .Normal)
-		setTabBarItemsColor(configuration.mainThemeColor, forState: .Selected)
+		setTabBarItemsColor(color: configuration.secondaryThemeColor != Color.gray.values.color ? Color.gray.values.color : UIColor.darkText.withAlphaComponent(0.25), forState: .normal)
+		setTabBarItemsColor(color: configuration.mainThemeColor, forState: .selected)
 		
 		//Update Status Bar
-		if configuration.secondaryThemeColor == Color.White.values.color {
-			UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: false)
+		if configuration.secondaryThemeColor == Color.white.values.color {
+			UIApplication.shared.setStatusBarStyle(.default, animated: false)
 		} else {
-			UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+			UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
 		}
 	}
 }
@@ -61,7 +61,7 @@ extension MainTabController {
 	func setTabBarItemsColor(color: UIColor, forState state: UIControlState) {
 		if let items = tabBar.items {
 			for item in items as [UITabBarItem] {
-				item.setTitleTextAttributes([NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: color], forState: state)
+				item.setTitleTextAttributes([NSFontAttributeName: UIFont.thinFontOfSize(11), NSForegroundColorAttributeName: color], for: state)
 			}
 		}
 	}

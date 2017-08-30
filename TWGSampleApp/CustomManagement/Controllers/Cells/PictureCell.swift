@@ -31,12 +31,12 @@ class PictureCell: UITableViewCell {
 	//MARK: Initialization
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(applyConfigurations), name: NSNotification.Name(rawValue: ConfigurationUpdatedKey), object: nil)
 	}
 	
 	//MARK: Deinitilization
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 }
 
@@ -54,14 +54,14 @@ extension PictureCell {
 
 extension PictureCell {
 	//MARK: Populate Cell From Data
-	func populateCellFromData(data: PictureData?) {
+	func populateCellFromData(_ data: PictureData?) {
 		guard let data = data else {
 			return
 		}
 		
 		//Set Data
 		captionLabel.text = data.caption
-		dispatch_async(dispatch_get_main_queue()) { 
+		DispatchQueue.main.async { 
 			self.pictureImageView.image = data.picture
 			self.backgroundImageView.image = data.picture
 		}

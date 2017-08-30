@@ -28,7 +28,7 @@ class WelcomeController: UIViewController {
 	
 	//MARK: Deinitilization
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 }
 
@@ -39,14 +39,14 @@ extension WelcomeController {
 		super.viewDidLoad()
 		applyInitialConfigurations()
 		applyConfigurations()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applyConfigurations), name: ConfigurationUpdatedKey, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(applyConfigurations), name: NSNotification.Name(rawValue: ConfigurationUpdatedKey), object: nil)
 	}
 	
 	//MARK: Initial Configuration
 	func applyInitialConfigurations() {
 		getStartedButton.layer.cornerRadius = 5
-		getStartedButton.setTitle(isDismissable ? "Dismiss" : "Get Started", forState: .Normal)
-		getStartedButton.addTarget(self, action: (isDismissable ? #selector(dismissOnboardingController) : #selector(proceedToGallery)), forControlEvents: .TouchUpInside)
+		getStartedButton.setTitle(isDismissable ? "Dismiss" : "Get Started", for: UIControlState())
+		getStartedButton.addTarget(self, action: (isDismissable ? #selector(dismissOnboardingController) : #selector(proceedToGallery)), for: .touchUpInside)
 	}
 	
 	//MARK: Apply Configurations
@@ -63,20 +63,20 @@ extension WelcomeController {
 		configurationsInfoLabel.textColor = configuration.onboardingConfiguration.labelsColor
 		
 		//Set Button Colors
-		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor, forState: .Normal)
+		getStartedButton.setTitleColor(configuration.onboardingConfiguration.buttonTextColor, for: UIControlState())
 		getStartedButton.backgroundColor = configuration.onboardingConfiguration.buttonBackgroundColor
 		getStartedButton.layer.borderWidth = 1
-		getStartedButton.layer.borderColor = configuration.onboardingConfiguration.buttonTextColor.CGColor
+		getStartedButton.layer.borderColor = configuration.onboardingConfiguration.buttonTextColor.cgColor
 		
 		//Set Page Control Color
-		pageControl.pageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor.colorWithAlphaComponent(0.5)
+		pageControl.pageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor.withAlphaComponent(0.5)
 		pageControl.currentPageIndicatorTintColor = configuration.onboardingConfiguration.pageControlTintColor
 	}
 }
 
 extension WelcomeController: UIScrollViewDelegate {
 	//MARK: Handle Page Control Updation
-	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+	func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 		//Set Current Page Indicator
 		pageControl.currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
 	}
@@ -85,12 +85,12 @@ extension WelcomeController: UIScrollViewDelegate {
 extension WelcomeController {
 	//MARK: Handle Button Actions
 	func dismissOnboardingController() {
-		dismissViewControllerAnimated(true, completion: nil)
+		dismiss(animated: true, completion: nil)
 	}
 	
 	func proceedToGallery() {
-		if let tabController = storyboard?.instantiateViewControllerWithIdentifier("MainTabController") as? MainTabController {
-			presentViewController(tabController, animated: true, completion: nil)
+		if let tabController = storyboard?.instantiateViewController(withIdentifier: "MainTabController") as? MainTabController {
+			present(tabController, animated: true, completion: nil)
 		}
 	}
 }

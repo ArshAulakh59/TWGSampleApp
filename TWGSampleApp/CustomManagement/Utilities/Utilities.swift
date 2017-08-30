@@ -18,32 +18,32 @@ let ConfigurationUpdatedKey = "ConfigurationUpdated"
 //Variable
 var configuration: Configuration = Configuration() {
 	didSet {
-		NSNotificationCenter.defaultCenter().postNotificationName(ConfigurationUpdatedKey, object: nil)
+		NotificationCenter.default.post(name: Notification.Name(rawValue: ConfigurationUpdatedKey), object: nil)
 	}
 }
 
 //Enumeration
 enum Color: Int {
-	case Red = 0
-	case Blue = 1
-	case Gray = 2
-	case Green = 3
-	case White = 4
-	case Yellow = 5
+	case red = 0
+	case blue = 1
+	case gray = 2
+	case green = 3
+	case white = 4
+	case yellow = 5
 	
 	var values: (index: Int, color: UIColor) {
 		switch self {
-		case .Red:
+		case .red:
 			return (self.rawValue, UIColor(hex: 0xD0021B))
-		case .Blue:
+		case .blue:
 			return (self.rawValue, UIColor(hex: 0x0177C0))
-		case .Gray:
-			return (self.rawValue, UIColor.lightGrayColor())
-		case .Green:
+		case .gray:
+			return (self.rawValue, UIColor.lightGray)
+		case .green:
 			return (self.rawValue, UIColor(hex: 0x21AC73))
-		case .White:
-			return (self.rawValue, UIColor.whiteColor())
-		case .Yellow:
+		case .white:
+			return (self.rawValue, UIColor.white)
+		case .yellow:
 			return (self.rawValue, UIColor(hex: 0xE3A522))
 		}
 	}

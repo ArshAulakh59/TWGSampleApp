@@ -12,8 +12,8 @@ import UIKit
 //Font
 extension UIFont {
 	//Convenience method to get thin system font for a given size
-	class func thinFontOfSize(size: CGFloat) -> UIFont {
-		return UIFont.systemFontOfSize(size, weight: UIFontWeightThin)
+	class func thinFontOfSize(_ size: CGFloat) -> UIFont {
+		return UIFont.systemFont(ofSize: size, weight: UIFontWeightThin)
 	}
 }
 
